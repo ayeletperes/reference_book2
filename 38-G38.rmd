@@ -1,0 +1,54 @@
+# IGHV4-34/IGHV4-59 - G38
+```{r}
+source("functions.R")
+```
+
+```{r, echo=FALSE}
+load("data.rda")
+
+chain = "IGH"
+func <-  data.frame(allele = names(vgerms[[chain]]), functionality = !grepl("(ORF|P)",sapply(seqinr::getAnnot(vgerms_full[[chain]]), function(x) unlist(strsplit(x,"[|]"))[4])), sign = sapply(seqinr::getAnnot(vgerms_full[[chain]]), function(x) unlist(strsplit(x,"[|]"))[4]), stringsAsFactors = F)
+
+mat <- mat_list$IGH$functional$nonsingle$all$`318`
+
+load("data_frac_new2.rda")
+data <- setDT(data_frac$IGH$functional$nonsingle$all$`318`$complete$`95`)
+data[,v_call:=paste0(v_gene,"*",v_allele)]
+load("alleles_dbs.rda")
+allele_db <- alleles_dbs$IGH$functional$nonsingle$all$`318`$complete$`95`
+allele_db <- allele_db %>% dplyr::rowwise() %>% dplyr::mutate(gene = alakazam::getGene(or_allele, strip_d = F, omit_nl = F), group = strsplit(gsub(gene, "", new_allele),"[*]")[[1]][1], gene_group = alakazam::getGene(new_allele, strip_d = F, omit_nl = F))
+load("functional_groups.rda")
+func_groups <- functional_groups$IGH$functional$nonsingle$all$`318`$complete$`95`
+
+cols <- c("#FAAB18", "#1380A1","#990000", "#588300")
+
+pal <- cols %>% 
+  newpal(names = c("orangy", "bluish", "redish", "greeny"))
+
+edit_links <- readLines("edit_links.txt")
+share_links <- readLines("share_links.txt")
+```
+
+```{r,echo=FALSE}
+g_group = "IGHV4-34G38"
+group = names(func_groups)[func_groups==g_group]
+gr <- allele_db %>% filter(gene_group == g_group) %>% pull(group) %>% unique()
+g <- allele_db %>% filter(gene_group == g_group) %>% pull(gene) %>% unique()
+```
+
+## Allele appearnce 
+
+There are no rearrangments for this group.
+
+## Group alignment
+
+Based on the viewd alleles, we calculated the distance between the germline sequences.
+
+```{r, fig.width=18,fig.height=30}
+
+v_calls <-
+    allele_db %>% dplyr::filter(grepl(as.character(g_group), new_allele)) %>%
+    dplyr::group_by(new_allele) %>% dplyr::summarise(or_allele = paste0(or_allele, collapse = "/"))
+v_calls <-  v_calls$new_allele
+seq_align(v_calls, allele_db, vgerms, chain, mat, g_group)
+```

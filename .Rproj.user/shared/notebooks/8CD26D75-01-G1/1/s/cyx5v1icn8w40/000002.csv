@@ -1,0 +1,34 @@
+"0","load(""data.rda"")
+"
+"2","Loading required package: msa
+"
+"2","
+Attaching package: ‘msa’
+
+"
+"2","The following object is masked from ‘package:BiocManager’:
+
+    version
+
+"
+"0","chain = ""IGH"""
+"0","func <-  data.frame(allele = names(vgerms[[chain]]), functionality = !grepl(""(ORF|P)"",sapply(seqinr::getAnnot(vgerms_full[[chain]]), function(x) unlist(strsplit(x,""[|]""))[4])), sign = sapply(seqinr::getAnnot(vgerms_full[[chain]]), function(x) unlist(strsplit(x,""[|]""))[4]), stringsAsFactors = F)"
+"0",""
+"0","mat <- mat_list$IGH$functional$nonsingle$all$`318`"
+"0",""
+"0","load(""data_frac_new2.rda"")"
+"0","data <- setDT(data_frac$IGH$functional$nonsingle$all$`318`$complete$`95`)"
+"0","data[,v_call:=paste0(v_gene,""*"",v_allele)]"
+"0","load(""alleles_dbs.rda"")"
+"0","allele_db <- alleles_dbs$IGH$functional$nonsingle$all$`318`$complete$`95`"
+"0","allele_db <- allele_db %>% rowwise() %>% mutate(gene = getGene(or_allele, strip_d = F, omit_nl = F), group = strsplit(gsub(gene, """", new_allele),""[*]"")[[1]][1], gene_group = getGene(new_allele, strip_d = F, omit_nl = F))"
+"0","load(""functional_groups.rda"")"
+"0","func_groups <- functional_groups$IGH$functional$nonsingle$all$`318`$complete$`95`"
+"0",""
+"0","cols <- c(""#FAAB18"", ""#1380A1"",""#990000"", ""#588300"")"
+"0",""
+"0","pal <- cols %>% "
+"0","  newpal(names = c(""orangy"", ""bluish"", ""redish"", ""greeny""))"
+"0",""
+"0","edit_links <- readLines(""edit_links.txt"")"
+"0","share_links <- readLines(""share_links.txt"")"

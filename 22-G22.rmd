@@ -1,0 +1,200 @@
+# IGHV3-43/IGHV3-43D - G22
+```{r}
+source("functions.R")
+```
+
+```{r, echo=FALSE}
+load("data.rda")
+
+chain = "IGH"
+func <-  data.frame(allele = names(vgerms[[chain]]), functionality = !grepl("(ORF|P)",sapply(seqinr::getAnnot(vgerms_full[[chain]]), function(x) unlist(strsplit(x,"[|]"))[4])), sign = sapply(seqinr::getAnnot(vgerms_full[[chain]]), function(x) unlist(strsplit(x,"[|]"))[4]), stringsAsFactors = F)
+
+mat <- mat_list$IGH$functional$nonsingle$all$`318`
+
+load("data_frac_new2.rda")
+data <- setDT(data_frac$IGH$functional$nonsingle$all$`318`$complete$`95`)
+data[,v_call:=paste0(v_gene,"*",v_allele)]
+load("alleles_dbs.rda")
+allele_db <- alleles_dbs$IGH$functional$nonsingle$all$`318`$complete$`95`
+allele_db <- allele_db %>% dplyr::rowwise() %>% dplyr::mutate(gene = alakazam::getGene(or_allele, strip_d = F, omit_nl = F), group = strsplit(gsub(gene, "", new_allele),"[*]")[[1]][1], gene_group = alakazam::getGene(new_allele, strip_d = F, omit_nl = F))
+load("functional_groups.rda")
+func_groups <- functional_groups$IGH$functional$nonsingle$all$`318`$complete$`95`
+
+cols <- c("#FAAB18", "#1380A1","#990000", "#588300")
+
+pal <- cols %>% 
+  newpal(names = c("orangy", "bluish", "redish", "greeny"))
+
+edit_links <- readLines("edit_links.txt")
+share_links <- readLines("share_links.txt")
+```
+
+```{r,echo=FALSE}
+g_group = "IGHV3-43G22"
+group = names(func_groups)[func_groups==g_group]
+gr <- allele_db %>% filter(gene_group == g_group) %>% pull(group) %>% unique()
+g <- allele_db %>% filter(gene_group == g_group) %>% pull(gene) %>% unique()
+```
+
+## Allele appearnce 
+
+The group of `r group` includes `r length(grep(g_group,allele_db$new_allele,value=T))` alleles, `r sum(func$functionality[func$allele %in% allele_db$or_allele[grep(g_group,allele_db$new_allele)]])` out of the alleles are functional.
+
+For each allele we counted the number of appearances across the population, any appearance was considered valid. 
+
+```{r}
+allele_appearance(data, g_group, allele_db)
+```
+
+## Group alignment
+
+Based on the viewd alleles, we calculated the distance between the germline sequences.
+
+```{r, fig.width=18,fig.height=30}
+v_calls <- unique(data[grepl(g_group,v_gene),v_call])
+seq_align(v_calls, allele_db, vgerms, chain, mat, g_group)
+```
+
+## Sequence depth
+
+To examine the potential cutoff we observed the sequence depth for each allele
+
+```{r}
+tagList(sequence_depth(data, g_group, allele_db))
+```
+
+## Absolute cutoff
+
+We set an initial cutoff of $0.5\%$ to determine the potential genotype priors. For this cutoff we examined the zygousity state, such as homozygousity, heterozygousity and so on.
+
+
+```{r}
+
+tmp_allele_db <-
+  allele_db %>% dplyr::filter(grepl(as.character(g_group), new_allele)) %>%
+  dplyr::group_by(new_allele) %>% dplyr::summarise(or_allele = paste0(or_allele, collapse = "/"))
+
+or_allele <-
+  setNames(gsub(chain, "", as.character(tmp_allele_db$or_allele)), as.character(gsub(
+    paste0(g_group, "[*]"),
+    "",
+    tmp_allele_db$new_allele
+  )))
+
+allele_thresh = 0.5
+
+tmp <- data_cutoff(data, func_g_groups, g_group, allele_thresh, or_allele)
+
+```
+
+With the selected cutoff we saw that there are `r length(unique(tmp %>% filter(is.na(j_call)) %>% arrange(zygousity_state) %>% pull(zygousity_state)))` zygousity states.
+
+```{r eval=knitr::is_html_output(excludes = 'epub'), results = 'asis', echo = F}
+source_haplo_usage(g_group, allele_thresh)
+```
+
+## Observations
+
+This section is editable by clicking on the edit button below. To refresh the section click on the refresh button
+
+You can access the file also from [here](`r edit_links[grep(g_group,edit_links)]`){target="_blank"}
+
+```{r, message=F, echo=F, warning=F}
+knitr::include_url(paste0("https://peresay.shinyapps.io/G2_group/?group=",g_group))
+# # Authenticate and save token for later use2
+# token <- drop_auth(rdstoken = "dropbox_token.rds")
+# 
+# # Retrieveing your file is as simple as
+# drop_download("public/conclusions/IGHV1-2.docx", local_path = "docs/IGHV1-2.docx",
+#               overwrite = TRUE, verbose = FALSE, progress = FALSE)
+# drop_df <- textreadr::read_docx("docs/IGHV1-2.docx")
+# invisible(rmarkdown::pandoc_convert(input = "IGHV1-2.docx", to = "markdown", output = "IGHV1-2_docx.md", options = c("--wrap=none","--reference-links","--metadata-file=metadata.yaml","--standalone"), wd = "docs", verbose = FALSE))
+# 
+# ui <- fluidPage(
+# 
+#     # Application title
+#     mainPanel(
+#       shiny::actionButton(inputId='ab1', label="Edit text", 
+#                           icon = icon("edit"), 
+#                           onclick ="window.open('https://www.dropbox.com/scl/fi/crphl3u49fmkw8wnb5v71/IGHV1-2.docx?dl=0&rlkey=l54oqhrlxx8wyp6bywr224sx0')"),
+#       
+#       shiny::actionButton(inputId='ab2', label="Reload text", 
+#                           icon = icon("sync-alt")),
+#       
+#       #htmlOutput("df_output"),
+#       uiOutput('markdown')
+#     )
+# )
+# 
+# server <- function(input, output) {
+#     
+#   observeEvent(input$ab2, {
+#     drop_download("public/conclusions/IGHV1-2.docx", local_path = "docs/IGHV1-2.docx",
+#               overwrite = TRUE, verbose = F)
+#     #drop_df <- textreadr::read_docx("docs/IGHV1-2.docx")
+#     
+#     rmarkdown::pandoc_convert(input = "IGHV1-2.docx", to = "markdown", output = "IGHV1-2_docx.md", options = c("--wrap=none","--reference-links","--metadata-file=metadata.yaml","--standalone"), wd = "docs", verbose = F)
+#     output$markdown <- renderUI({
+#       #withMathJax(includeMarkdown(knitr::knit('IGHV1-2_docx.md', quiet = TRUE)))
+#     HTML(markdown::markdownToHTML(knitr::knit('docs/IGHV1-2_docx.md', quiet = TRUE)))
+#   })
+#     
+#   })
+#     
+#   # output$df_output <- renderUI({
+#   #       if(input$ab2) return()
+#   #       HTML(paste(drop_df, collapse = "<br/><br/>"))
+#   #   })
+#   
+#   output$markdown <- renderUI({
+#     #withMathJax(includeMarkdown(knitr::knit('docs/IGHV1-2_docx.md', quiet = TRUE)))
+#     HTML(markdown::markdownToHTML(knitr::knit('docs/IGHV1-2_docx.md', quiet = TRUE)))
+#   })
+# }
+# 
+# shinyApp(ui = ui, server = server)
+
+```
+
+## Conclusions
+
+From the results we believe that the cutoff for this group should be 
+```{r} 
+DT::datatable(data.frame(thresholds = absolute_thresholds_dict[[g_group]]))
+```
+
+and for the adjusted states the allele combinations and the relations are stated in the table below.
+
+### Allele specific cutoff
+
+```{r}
+
+tableData <- data_cutoff(data, func_groups, g_group, 5, or_allele) %>% dplyr::group_by(zygousity_state, v_allele) %>% dplyr::summarise(mean_freq = paste0(round(quantile(freq2, 3/4),3),":", round(quantile(freq2, 1/4),3)), v_alleles_abc = unique(v_allele_axis)) %>% dplyr::group_by(zygousity_state, v_alleles_abc) %>% dplyr::summarise(fractions = paste0(mean_freq, collapse = ";"))
+
+DT::datatable(
+        tableData,
+        options = list(dom = "tipr"),
+        selection = 'none',
+        colnames = c(
+          "Zygousity state" = "zygousity_state",
+          "V\nallele" = "v_alleles_abc",
+          "IQR range" = "fractions"
+        )
+      )
+
+
+# column names change to Zygousity state, alleles combinations, IQR 
+
+```
+```{r, out.height= "100%", out.width="100%"}
+m <- list(
+    l = 50,
+    r = 50,
+    b = 100,
+    t = 100,
+    pad = 0.5
+)
+heatmap_alleles(data, g_group, allele_db, func)%>%
+  layout(autosize = F, width = 800, height = 1300)
+```
+

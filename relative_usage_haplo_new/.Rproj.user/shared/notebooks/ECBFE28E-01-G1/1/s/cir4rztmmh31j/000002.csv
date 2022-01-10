@@ -1,0 +1,8 @@
+"0","tableData <- data_cutoff(data, func_groups, g_group, 5, or_allele) %>% dplyr::group_by(zygousity_state, v_allele) %>% dplyr::summarise(mean_freq = paste0(round(quantile(freq, 3/4),3),"":"", round(quantile(freq, 1/4),3)), v_alleles_abc = unique(v_alleles_abc)) %>% dplyr::group_by(zygousity_state, v_alleles_abc) %>% dplyr::summarise(fractions = paste0(mean_freq, collapse = "";""))
+"
+"2","Error: Problem with `summarise()` column `v_alleles_abc`.
+[34mℹ[39m `v_alleles_abc = unique(v_alleles_abc)`.
+[31mx[39m error in evaluating the argument 'x' in selecting a method for function 'unique': object 'v_alleles_abc' not found
+[34mℹ[39m The error occurred in group 1: zygousity_state = 0, v_allele = ""01_T91C"".
+[90mRun `rlang::last_error()` to see where the error occurred.[39m
+"

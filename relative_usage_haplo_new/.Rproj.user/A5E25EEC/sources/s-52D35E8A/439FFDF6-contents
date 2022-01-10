@@ -1,0 +1,200 @@
+---
+title: "Functional groups"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+biblio-style: apalike
+link-citations: yes
+---
+# Functional groups
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = F, error=F, message = F)
+#options(repos = BiocManager::repositories())
+pacman::p_load('dplyr', 'tidyr', 'htmltools', 'bbplot', 'scales',
+               'ggplot2', 'rdrop2', 'shiny', 'BiocManager',
+               'dendextend', 'data.table', 'Biostrings', 'alakazam', "unikn", 
+               'plotly', "jcolors", 'ggdendro', "RColorBrewer","kmer", install = F)
+```
+
+```{r}
+source("functions.R")
+```
+
+## Sequence pre-processing
+
+Summary statistics for each of the functional groups declared in the app.
+
+The app includes the P1 and P11 naive datasets and the P4 non-naive dataset.
+
+For P1 and P11 the following filtration criteria were applied:
+
+* Functional sequence, no stop codons or frame shifts.
+* Sequences which start from position 1 of the V gene.
+* Sequences which didn't have gaps open (-) and didn't include any N's
+* After changing into group annotations, sequences which had more than a single assignment in naive repertoires were remove.
+
+The groups were created with similarity of 95% based on complete linkage and functional sequences and up to position 318.
+
+## Group devision by 95% similarity
+
+```{r, fig.asp=0.8, out.width="1000%", fig.width=20}
+load("data.rda")
+mat <- mat_list$IGH$functional$nonsingle$all$`318`
+clust <- hclust(as.dist(mat), "complete")
+clusters <- cutree(clust, h = 0.05)
+names(clusters) <- names(cutree(clust, h = 0.05))
+dend <- as.dendrogram(clust)
+fam_clusters <- clusters
+
+clusters <- clusters[order.dendrogram(dend)]
+clusters_numbers <- unique(clusters) - (0 %in% clusters)
+n_clusters <- length(clusters_numbers)
+
+cols <- c("#FAAB18", "#1380A1","#990000", "#588300")
+
+pal <- cols %>% 
+  newpal(names = c("orangy", "bluish", "redish", "greeny"))
+
+mypal = setNames(alpha(pal %>% usecol(n = n_clusters),0.99), 1:n_clusters) 
+cluster_new <- mypal[clusters]
+
+clusters_imgt <- clusters
+clusters_imgt <- getGene(names(clusters_imgt), strip_d = F, omit_nl = F)
+
+imgt_colors <-
+  setNames(alpha(pal %>% usecol(n = length(unique(clusters_imgt))), 0.99), sort(unique(clusters_imgt)))
+clusters_imgt <-   imgt_colors[clusters_imgt]
+
+dend2 <-
+  dend %>% branches_attr_by_clusters(clusters, values = mypal) %>% dendextend::set("labels_cex", 0.9)
+
+
+par(mar = c(12, 4, 1, 1))
+dend2 %>% plot
+dend2 %>% rect.dendrogram2(
+  k = n_clusters,lower_rect = 0,
+  text = clusters_numbers, xpd = T,
+  #border = 8,
+  lty = 5,
+  lwd = 2,
+  border = mypal
+)
+colored_bars(
+  cbind(clusters_imgt, cluster_new),
+  dend2,
+  sort_by_labels_order = F,
+  rowLabels = c("IMGT", "NEW")
+)
+```
+
+## Groups Repertoire normalization
+
+Based on the groups absolute thresholds, the usage was plotted. Each dot is an individual and the colors shows the zygousity state while the shape indicates the project. 
+
+```{r, fig.height=50, fig.width=30, out.height="100%",  out.width="100%"}
+chain = "IGH"
+func <-  data.frame(allele = names(vgerms[[chain]]), functionality = !grepl("(ORF|P)",sapply(seqinr::getAnnot(vgerms_full[[chain]]), function(x) unlist(strsplit(x,"[|]"))[4])), sign = sapply(seqinr::getAnnot(vgerms_full[[chain]]), function(x) unlist(strsplit(x,"[|]"))[4]), stringsAsFactors = F)
+
+load("data_frac_new2.rda")
+data <- setDT(data_frac$IGH$functional$nonsingle$all$`318`$complete$`95`)
+data[,v_call:=paste0(v_gene,"*",v_allele)]
+load("alleles_dbs.rda")
+allele_db <- alleles_dbs$IGH$functional$nonsingle$all$`318`$complete$`95`
+allele_db <- allele_db %>% rowwise() %>% mutate(gene = getGene(or_allele, strip_d = F, omit_nl = F), group = strsplit(gsub(gene, "", new_allele),"[*]")[[1]][1], gene_group = getGene(new_allele, strip_d = F, omit_nl = F))
+load("functional_groups.rda")
+func_groups <- functional_groups$IGH$functional$nonsingle$all$`318`$complete$`95`
+
+groups <- allele_db %>% select(gene, gene_group) %>% dplyr::distinct()
+groups <- setNames(groups$gene_group, groups$gene)
+func$group <- groups[getGene(func$allele, strip_d = F, omit_nl = F)]
+
+tmp_allele_db <- allele_db %>%
+  dplyr::group_by(new_allele) %>% 
+  dplyr::summarise(or_allele = paste0(or_allele, collapse = "/"))
+
+or_allele <- setNames(tmp_allele_db$or_allele, tmp_allele_db$new_allele)
+
+
+
+data_cluster <- data[, v_allele_axis := or_allele[v_call]]
+data_cluster$group_plot <- ifelse(is.na(data_cluster$j_call), 1, 2)
+data_cluster <- data_cluster[mut == 0 & group_plot == 1]
+data_cluster <- data_cluster[, .(v_allele_axis = unlist(tstrsplit(v_allele_axis, "/", type.convert = FALSE))), by = setdiff(names(data_cluster), "v_allele_axis")]
+data_cluster2 <- data_cluster %>% filter(v_gene %in% names(absolute_thresholds_dict)) %>% 
+  rowwise() %>% 
+  dplyr::mutate(thresh = unique(as.numeric(absolute_thresholds_dict[[v_gene]][gsub("IGH","",v_allele_axis)])))
+data_cluster2 <- data_cluster2 %>% filter(freq2>=thresh)
+
+p_list <- list()
+i = 1
+for(g_group in names(absolute_thresholds_dict)){
+  n_alleles <- func %>% filter(group==g_group) 
+  if(nrow(n_alleles)==0) next()
+  n_alleles <- n_alleles %>% rowwise() %>% mutate(allele_num = strsplit(allele, "[*]")[[1]][2]) %>% dplyr::arrange(allele_num)
+  alleles <- n_alleles$allele
+  
+  threhsolds <- absolute_thresholds_dict[[g_group]]
+  df <- data.frame(v_allele_axis2 = paste0("IGH", names(threhsolds)), thresh = threhsolds, freq2 = 0)
+  data_cluster3 <- data_cluster2 %>% filter(v_gene==g_group)
+  if(nrow(data_cluster3)==0) next()
+  data_cluster3$v_allele_axis2 <- factor(data_cluster3$v_allele_axis, n_alleles$allele)
+  data_cluster3$v_allele_axis3 <- as.numeric(data_cluster3$v_allele_axis2)
+  
+  data_cluster3 <- data_cluster3 %>% dplyr::arrange(desc(freq2)) %>%
+    dplyr::group_by(subject) %>% dplyr::mutate(
+      zygousity_state = dplyr::n()
+    ) %>% arrange(subject)
+  
+  
+  p_list[[i]] <- ggplot() + geom_boxplot(data = data_cluster3, mapping = aes(v_allele_axis2, freq2) , outlier.shape = NA) + 
+    geom_point(data = data_cluster3, mapping = aes(v_allele_axis2, freq2, color = factor(zygousity_state), shape = project), size = 6, position=position_jitter(width = 0.1)) +
+    geom_errorbar(data=df, aes(x = v_allele_axis2, ymin = thresh, ymax = thresh),
+                  size=0.5,col="red", linetype = "dashed") +
+    labs(x = "", y = "Repertoire\nnormalized", color = "Zygousity", shape = "Project") + theme_bw(base_size = 40) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  i = i +1
+}
+
+cowplot::plot_grid(plotlist = p_list[1:5], align = "hv", ncol = 1)
+
+```
+```{r, fig.height=50, fig.width=30}
+cowplot::plot_grid(plotlist = p_list[6:10], align = "hv", ncol = 1)
+```
+
+```{r, fig.height=50, fig.width=30}
+cowplot::plot_grid(plotlist = p_list[11:15], align = "hv", ncol = 1)
+```
+
+```{r, fig.height=50, fig.width=30}
+cowplot::plot_grid(plotlist = p_list[16:20], align = "hv", ncol = 1)
+```
+
+```{r, fig.height=50, fig.width=30}
+cowplot::plot_grid(plotlist = p_list[21:25], align = "hv", ncol = 1)
+```
+
+```{r, fig.height=50, fig.width=30}
+cowplot::plot_grid(plotlist = p_list[26:30], align = "hv", ncol = 1)
+```
+
+```{r, fig.height=50, fig.width=30}
+cowplot::plot_grid(plotlist = p_list[31:35], align = "hv", ncol = 1)
+```
+
+```{r, fig.height=50, fig.width=30}
+cowplot::plot_grid(plotlist = p_list[36:41], align = "hv", ncol = 1)
+```
+
+## Group Checklist
+
+```{r eval=knitr::is_html_output(excludes = 'epub'), results = 'asis', echo = F}
+# Projects sequence depth
+cat(
+    '<iframe
+  src=',paste0("https://peresay.shinyapps.io/checklist"),
+    ' border="0" frameborder="0" style="border-style:none;overflow: scroll;box-shadow:0px 0px 2px 2px rgba(0,0,0,0.2); width: 100%;height:300px;" cellspacing="0">
+  </iframe>', sep = ""
+  )
+```
+

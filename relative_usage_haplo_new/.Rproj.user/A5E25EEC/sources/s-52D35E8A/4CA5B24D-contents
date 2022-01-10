@@ -1,0 +1,15 @@
+g_group = "IGHV6-1G48"
+tmp_allele_db = allele_db %>% dplyr::filter(grepl(as.character(g_group), new_allele)) %>%
+dplyr::group_by(new_allele) %>% dplyr::summarise(or_allele = paste0(or_allele, collapse = "/"))
+or_allele <-
+setNames(gsub(chain, "", as.character(tmp_allele_db$or_allele)), as.character(gsub(
+paste0(g_group, "[*]"),
+"",
+tmp_allele_db$new_allele
+)))
+tmp <- data %>%
+dplyr::filter(v_gene == g_group,
+!is.na(v_allele),
+group_plot == 1) %>%
+dplyr::ungroup() %>% dplyr::mutate(v_allele_axis = or_allele[v_allele])
+cat(unique(tmp$v_allele_axis), sep = '","')

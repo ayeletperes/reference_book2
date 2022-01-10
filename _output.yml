@@ -1,0 +1,37 @@
+bookdown::gitbook:
+  css: style.css
+  split_by: rmd
+  number_sections: false
+  config:
+    edit:
+      link: https://github.com/ayeletperes/reference_book/edit/master/%s
+      text: "Suggest an edit"
+    toc:
+      before: |
+        <li><a href="./">Functional groups referebce book</a></li>
+      after: |
+        <li><a href="./">© Copyright 2021 [The Functional Group Authors] (https://github.com/ayeletperes/reference_book/master/AUTHORS) Software licensed under the [Apache License, v2.0] (https://www.apache.org/licenses/LICENSE-2.0).</a></li>
+      collapse: section
+      scroll_highlight: true
+    toolbar:
+      position: fixed
+    search:
+      engine: lunr # or fuse
+      # options to control/tune search engine behavior (for
+      # fuse.js, refer to https://fusejs.io/api/options.html)
+      options: null
+    fontsettings:
+      theme: white
+      family: sans
+      size: 2
+    sharing:
+      facebook: true
+      github: false
+      twitter: true
+      linkedin: false
+      weibo: false
+      instapaper: false
+      vk: false
+      whatsapp: false
+      all: ['facebook', 'twitter', 'linkedin', 'weibo', 'instapaper']
+    info: true
