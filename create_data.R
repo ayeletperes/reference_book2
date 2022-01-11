@@ -514,5 +514,30 @@ for(i in 1:length(absolute_thresholds_dict)){
 }
 
 
+#########################3
+
+
+files2 <- list.files("../reference_book2/",".rmd")
+files2 <- files2[-8]
+for(f in files2){
+  
+  lines <- readLines(f)
+  
+  id <- grep("v_calls <- unique", lines)
+  
+  if(length(id)!=0){
+    lines2 <- lines[1:(id-2)]
+    lines3 <- c("```{r}", "v_calls <- unique(data[grepl(g_group,v_gene),v_call])", "seq_align(v_calls, allele_db, vgerms, chain, mat, g_group)","```")
+    lines4 <- lines[(id-1):(id+2)]
+    lines4[3] <- gsub("seq_align","seq_align2", lines4[3])
+    lines5 <- lines[(id+3):length(lines)]
+    
+    lines <- c(lines2, lines3, lines4, lines5)
+    
+    writeLines(lines, f)
+  }
+  
+}
+
 
 

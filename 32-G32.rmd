@@ -50,9 +50,13 @@ allele_appearance(data, g_group, allele_db)
 
 Based on the viewd alleles, we calculated the distance between the germline sequences.
 
-```{r, fig.width=18,fig.height=30}
+```{r}
 v_calls <- unique(data[grepl(g_group,v_gene),v_call])
 seq_align(v_calls, allele_db, vgerms, chain, mat, g_group)
+```
+```{r, fig.width=18,fig.height=30}
+v_calls <- unique(data[grepl(g_group,v_gene),v_call])
+seq_align2(v_calls, allele_db, vgerms, chain, mat, g_group)
 ```
 
 ## Sequence depth

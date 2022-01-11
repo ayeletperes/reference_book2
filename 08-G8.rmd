@@ -1,9 +1,7 @@
 # IGHV1-69/IGHV1-69D - G8
-```{r}
-source("functions.R")
-```
 
 ```{r, echo=FALSE}
+source("functions.R")
 load("data.rda")
 
 chain = "IGH"
@@ -36,26 +34,35 @@ gr <- allele_db %>% filter(gene_group == g_group) %>% pull(group) %>% unique()
 g <- allele_db %>% filter(gene_group == g_group) %>% pull(gene) %>% unique()
 ```
 
-## Allele appearnce 
+
+
+## Allele appearance
+
 
 The group of `r group` includes `r length(grep(g_group,allele_db$new_allele,value=T))` alleles, `r sum(func$functionality[func$allele %in% allele_db$or_allele[grep(g_group,allele_db$new_allele)]])` out of the alleles are functional.
 
 For each allele we counted the number of appearances across the population, any appearance was considered valid. 
 
-```{r}
+```{r FIG-AP, out.width="100%", fig.asp= 2}
 allele_appearance(data, g_group, allele_db)
 ```
 
 ## Group alignment
 
-Based on the viewd alleles, we calculated the distance between the germline sequences.
 
-```{r, fig.width=18,fig.height=30, echo = F}
+Based on the observed alleles, we calculated the distance between the germline sequences.
+
+```{r}
 v_calls <- unique(data[grepl(g_group,v_gene),v_call])
 seq_align(v_calls, allele_db, vgerms, chain, mat, g_group)
 ```
 
+```{r, fig.width=10,fig.height=30, echo = F}
+seq_align2(v_calls, allele_db, vgerms, chain, mat, g_group)
+```
+
 ## Sequence depth
+
 
 To examine the potential cutoff we observed the sequence depth for each allele
 
@@ -64,6 +71,7 @@ tagList(sequence_depth(data, g_group, allele_db))
 ```
 
 ## Absolute cutoff
+
 
 We set an initial cutoff of $0.5\%$ to determine the potential genotype priors. For this cutoff we examined the zygousity state, such as homozygousity, heterozygousity and so on.
 

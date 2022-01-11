@@ -381,7 +381,7 @@ absolute_thresholds_dict <- list(
     'V3-21*01_A131C' = 1e-04
   ),
   "IGHV3-23G19" = c(
-    "V3-23*01/V3-23D*01" = 0.001,
+    "V3-23D*01/V3-23*01" = 0.001,
     "V3-23*04" = 0.001,
     'V3-23*01_A131C' = 1e-04,
     'V3-23*01_A303G' = 1e-04,
@@ -418,7 +418,6 @@ absolute_thresholds_dict <- list(
     "V3-33*03" = 0.0001,
     "V3-30*15" = 0.0001,
     "V3-30*19" = 0.0001,
-    'V3-30-5*02' = 1e-04,
     'V3-30-5*01' = 1e-04,
     'V3-30*18_C75G' = 1e-04,
     'V3-30-3*01_A131C' = 1e-04,
@@ -450,7 +449,7 @@ absolute_thresholds_dict <- list(
     'V3-33*07' = 1e-04,
     'V3-33*04' = 1e-04,
     'V3-33*02' = 1e-04,
-    'V3-30*18' = 1e-04,
+    'V3-30*18/V3-30-5*02' = 1e-04,
     'V3-30*17' = 1e-04,
     'V3-30*13' = 1e-04,
     'V3-30*12' = 1e-04,
@@ -737,9 +736,9 @@ server <- function(input, output, session) {
   input_vals <-
     reactiveValues(
       tabs_count = 0,
-      g_group = "IGHV4-4G44",
-      g = allele_db %>% dplyr::filter(gene_group == "IGHV4-4G44") %>% pull(gene) %>% unique(),
-      v_gene_cut = "IGHV4-4G44",
+      g_group = "IGHV3-23G19",
+      g = allele_db %>% dplyr::filter(gene_group == "IGHV3-23G19") %>% pull(gene) %>% unique(),
+      v_gene_cut = "IGHV3-23G19",
       allele_thresh = NULL,
       allele_thresh_names = NULL,
       allele_thresh_abs = NULL,

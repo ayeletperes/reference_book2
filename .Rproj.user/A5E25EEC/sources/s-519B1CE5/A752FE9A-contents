@@ -557,20 +557,23 @@ allele_appearance <- function(data_, g_group, allele_db) {
   data_ <- data_ %>% filter(mut == 3)
   data_ <- data_[grepl(g_group, v_gene)]
   data_[, v_alleles2 := or_allele[v_allele]]
-  ggplot(data_ %>% filter(is.na(j_call)), aes(v_alleles2, fill = v_alleles2)) +
-    geom_bar() + facet_grid(. ~ project) +
-    labs(x = "allele", y = "# Individuals", fill = "") +
+  p <- ggplot(data_ %>% filter(is.na(j_call)), aes(v_alleles2)) + #, fill = v_alleles2
+    geom_bar() + coord_flip() + facet_wrap(. ~ project, nrow = 3) +
+    labs(x = "allele", y = "# Individuals", fill = "") + theme_minimal() +
     theme(
       legend.position = "bottom",
       axis.text.x = element_text(
-        size = 14,
-        angle = 90,
-        vjust = 0.5,
-        hjust = 1
-      )
-    ) +
-    scale_fill_manual(values = pal %>% usecol(n = n_alleles))
-  
+        size = 12
+        #angle = 90,
+        #vjust = 0.5,
+        #hjust = 1
+      ),
+      axis.text.y = element_text(
+        size = 12
+      ), axis.title = element_text(size = 14)
+    ) #+
+    #scale_fill_manual(values = pal %>% usecol(n = n_alleles))
+  ggplotly(p)
 }
 
 sequence_depth <- function(data_, g_group, allele_db) {
@@ -1137,7 +1140,6 @@ plot_zygousity_allele_thresh <-
     return(plotly1)
   }
 
-
 seq_align <-
   function(v_calls,
            allele_db,
@@ -1177,29 +1179,129 @@ seq_align <-
       hc <- ape::ladderize(hc)
     }
     dend <- as.dendrogram(hc)
-    dend <- dendextend::set(dend, "labels_cex", 2)
+    dend <- dendextend::set(dend, "labels_cex", 0.5)
     ggd1 <- as.ggdend(dend)
+    ggd1$labels$y <- ggd1$labels$y-0.01
+    #ggd1$labels$angle <- 45
+    #ggd1$labels$hjust <- 1
+    #ggd1$labels$vjust <- 0.5
     
-    ggd1$labels$angle <- 45
-    ggd1$labels$hjust <- 0
-    ggd1$labels$vjust <- 0.5
+    # p_dend <- ggplot(ggd1)  +
+    #   theme(
+    #     axis.line = element_blank(),
+    #     axis.title.x = element_blank(),
+    #     axis.ticks.x = element_blank(),
+    #     axis.text.x = element_blank(),
+    #     axis.text.y = element_text(size = 24),
+    #     axis.title.y = element_text(size = 24),
+    #     panel.grid.major = element_blank(),
+    #     panel.grid.minor = element_blank(),
+    #     panel.border = element_blank(),
+    #     panel.background = element_blank(),
+    #     legend.position = "none"
+    #   ) +
+    #   scale_y_continuous(sec.axis = sec_axis(~ . * nucs, name = "Mutations")) +
+    #   ylab("Ratio")
     
-    p_dend <- ggplot(ggd1)  +
+    p_dend <- ggplot(ggd1, horiz = T,  theme = NULL)  +
       theme(
         axis.line = element_blank(),
-        axis.title.x = element_blank(),
-        axis.ticks.x = element_blank(),
-        axis.text.x = element_blank(),
-        axis.text.y = element_text(size = 24),
-        axis.title.y = element_text(size = 24),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
+        axis.title.y = element_blank(),
+        axis.ticks.y = element_blank(),axis.ticks.x = element_line(),
+        axis.text.y = element_blank(),
+        axis.text.x = element_text(size = 12),
+        axis.title.x = element_text(size = 12),
+        panel.grid.minor = element_line(color = "gray"),
         panel.border = element_blank(),
         panel.background = element_blank(),
         legend.position = "none"
       ) +
-      scale_y_continuous(sec.axis = sec_axis(~ . * nucs, name = "Mutations")) +
+      scale_y_continuous(limits = c(-0.035, NA), sec.axis = sec_axis(~ . * nucs, name = "Mutations")) +
       ylab("Ratio")
+    
+    pg <- ggplotly(p_dend)%>% layout(margin = list(l = 75))
+    return(pg)
+  }
+
+seq_align2 <-
+  function(v_calls,
+           allele_db,
+           vgerms,
+           chain,
+           mat,
+           g_group) {
+    alleles <-
+      allele_db %>% dplyr::filter(new_allele %in% v_calls) %>% dplyr::pull(or_allele)
+    new_alleles <-
+      setNames(allele_db %>% filter(new_allele %in% v_calls) %>% dplyr::pull(new_allele),
+               alleles)
+    sequences <- substr(vgerms[[chain]][alleles], 1, 318)
+    #names(sequences) <- new_alleles[names(sequences)]
+    
+    sequences <-
+      sapply(sequences, function(seq)
+        ifelse(nchar(seq) < 318, paste0(
+          seq, paste0(rep(".", 318 - nchar(seq)), collapse = ""), collapse = ""
+        ), seq))
+    
+    mat_sub <- mat[alleles, alleles]
+    
+    colnames(mat_sub) <-  gsub("IGH", "", colnames(mat_sub))
+    rownames(mat_sub) <-  gsub("IGH", "", rownames(mat_sub))
+    
+    matrix_sequences <-
+      as.data.frame(sapply(sequences, seqinr::s2c), stringsAsFactors = F)
+    
+    nucs <-
+      nrow(matrix_sequences) - sum(apply(matrix_sequences, 1, function(x)
+        all(x == ".")))
+    if (length(alleles) < 3) {
+      hc <- hclust(as.dist(mat_sub))
+    } else{
+      hc <- ape::nj(as.dist(mat_sub))
+      hc <- ape::ladderize(hc)
+    }
+    dend <- as.dendrogram(hc)
+    dend <- dendextend::set(dend, "labels_cex", 2)
+    ggd1 <- as.ggdend(dend)
+    ggd1$labels$y <- ggd1$labels$y-0.005
+    #ggd1$labels$angle <- 45
+    #ggd1$labels$hjust <- 1
+    #ggd1$labels$vjust <- 0.5
+    
+    # p_dend <- ggplot(ggd1)  +
+    #   theme(
+    #     axis.line = element_blank(),
+    #     axis.title.x = element_blank(),
+    #     axis.ticks.x = element_blank(),
+    #     axis.text.x = element_blank(),
+    #     axis.text.y = element_text(size = 24),
+    #     axis.title.y = element_text(size = 24),
+    #     panel.grid.major = element_blank(),
+    #     panel.grid.minor = element_blank(),
+    #     panel.border = element_blank(),
+    #     panel.background = element_blank(),
+    #     legend.position = "none"
+    #   ) +
+    #   scale_y_continuous(sec.axis = sec_axis(~ . * nucs, name = "Mutations")) +
+    #   ylab("Ratio")
+    # 
+    # p_dend <- ggplot(ggd1, horiz = T,  theme = NULL)  +
+    #   theme(
+    #     axis.line = element_blank(),
+    #     axis.title.y = element_blank(),
+    #     axis.ticks.y = element_blank(),axis.ticks.x = element_line(),
+    #     axis.text.y = element_blank(),
+    #     axis.text.x = element_text(size = 12),
+    #     axis.title.x = element_text(size = 12),
+    #     panel.grid.minor = element_line(color = "gray"),
+    #     panel.border = element_blank(),
+    #     panel.background = element_blank(),
+    #     legend.position = "none"
+    #   ) +
+    #   scale_y_continuous(sec.axis = sec_axis(~ . * nucs, name = "Mutations")) +
+    #   ylab("Ratio")
+    # 
     
     
     snps <-
@@ -1214,7 +1316,7 @@ seq_align <-
       reshape2::melt(matrix_sequences, id.vars = c("pos", "annot"))
     matrix_sequences_plot$id <- matrix_sequences_plot$pos
     matrix_sequences_plot$allele <-
-      gsub(paste0(g_group, "[*]"), "", matrix_sequences_plot$variable)
+      gsub("IGHV", "", matrix_sequences_plot$variable)
     matrix_sequences_plot$allele <-
       factor(matrix_sequences_plot$allele,
              levels = unique(matrix_sequences_plot$allele))
@@ -1308,7 +1410,7 @@ seq_align <-
       axis.title.x = element_blank(),
       axis.ticks.y = element_blank(),
       axis.ticks.x = element_line(),
-      axis.text.y = element_text(size = 24),
+      axis.text.y = element_text(size = 14),
       axis.text.x = element_text(
         size = 24,
         angle = 45,
@@ -1349,7 +1451,7 @@ seq_align <-
     #index <- grep("panel", align_plot$layout$name)
     #align_plot$layout$clip[index] = "off"
     
-    return(invisible(lapply(list(p_dend, p1), print)))
+    return(plot(p1))
   }
 
 rect.dendrogram2 <-
