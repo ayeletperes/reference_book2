@@ -238,10 +238,11 @@ method = "complete"
 range_seq <- 1 - as.numeric(thresh) / 100
 hc_sub <- hclust(as.dist(mat), method)
 row_order <- labels(as.dendrogram(hc_sub, hang = -1))
-cut <- data.frame(cluster = cutree(as.dendrogram(hc_sub, hang = -1), h = range_seq))
+cut <- data.frame(cluster = dendextend::cutree(as.dendrogram(hc_sub, hang = -1), h = range_seq))
 hc_sub <- cut
 colnames(hc_sub) <- paste0((1-range_seq)*100, "%")
 
+library(alakazam)
 imgt <- unique(getGene(rownames(hc_sub), strip_d = F, omit_nl = F))
 imgt <- setNames(1:length(imgt), imgt)
 hc_sub$IMGT <- imgt[getGene(rownames(hc_sub), strip_d = F, omit_nl = F)]
@@ -257,7 +258,7 @@ hc_plot$variable <- factor(hc_plot$variable, levels = c("IMGT", paste0((1-range_
 groups <-
   setNames(hc_plot$value[hc_plot$variable != "IMGT"], hc_plot$labels[hc_plot$variable !=
                                                                        "IMGT"])
-
+library(dplyr)
 alleles_db <- c()
 for (gr in unique(groups)) {
   genes <- names(groups)[groups == gr]
@@ -539,5 +540,19 @@ for(f in files2){
   
 }
 
+########### thresholds
+source("functions.R")
+dfs <- data.table::rbindlist(lapply(absolute_thresholds_dict, function(l) data.frame(or_allele = paste0("IGH",names(l)), thresh = unlist(l), stringsAsFactors = F, row.names = NULL)), use.names = T, fill = T, idcol = "func_group")
+dfs_f <- dfs[dfs$or_allele %in% alleles_db$or_allele,]
+dfs_f <- dfs_f[!duplicated(dfs_f),]
+ll <- setNames(alleles_db$new_allele, alleles_db$or_allele)
+dfs_f$new_allele <- ll[dfs_f$or_allele]
+alleles_db$group <- getGene(alleles_db$new_allele, first = F, strip_d = F, omit_nl = F)
 
+ll <- setNames(alleles_db$group, alleles_db$or_allele)
+dfs_f$group <- ll[dfs_f$or_allele]
 
+remove
+ll <- setNames(alleles_db$new_allele, alleles_db$or_allele)
+dfs_f$rm <- ll[dfs_f$or_allele]
+dfs_f <- dfs_f %>% dplyr::group_by(new_allele) %>% dplyr::summarise(func_group = func_group, or_allele = paste0(or_allele, collapse = "/"), thresh = unique(thresh))

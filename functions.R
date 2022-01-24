@@ -4,7 +4,6 @@ absolute_thresholds_dict <- list(
     "V1-18*01" = 0.001,
     "V1-18*04" = 0.001,
     "V1-18*03" = 0.0001,
-    "V1-18*03" = 0.0001,
     "V1-18*01_T189G" = 1e-04,
     "V1-18*01_A190G" = 1e-04,
     'V1-18*01_A196G' = 1e-04
@@ -397,7 +396,6 @@ absolute_thresholds_dict <- list(
     "V4-31*03" = 0.0001,
     "V4-31*01" = 0.0001,
     "V4-31*11" = 0.0001,
-    "V4-30-4*08" = 0.001,
     "V4-31*02" = 0.001,
     'V4-31*04' = 1e-04,
     'V4-31*05' = 1e-04,
@@ -539,6 +537,12 @@ absolute_thresholds_dict <- list(
   )
 )
 
+absolute_thresholds_dict <- read.delim("alleles_db.tsv", stringsAsFactors = F)
+
+absolute_thresholds_dict <- sapply(unique(absolute_thresholds_dict$func_group), function(x){
+  tmp <- absolute_thresholds_dict[absolute_thresholds_dict$func_group==x,]
+  setNames(tmp$thresh,gsub("IGH","",tmp$or_allele))
+})
 
 allele_appearance <- function(data_, g_group, allele_db) {
   tmp_allele_db <-
@@ -617,90 +621,92 @@ sequence_depth <- function(data_, g_group, allele_db) {
   
   
   
-  p_list <- lapply(unique(data_$project), function(p) {
-    # dd <- data_[project==p]
-    # for (diff in setdiff(levels(dd$v_alleles2_factor), unique(dd$v_alleles2_factor))) {
-    #   dummy_name = paste0('dummy_', diff)
-    #   dd[dummy_name,] <- dd[1,]
-    #   for (n in names(dd[1,])) {
-    #     dd[dummy_name,][n] = NaN
-    #   }
-    #   dd[dummy_name,]$v_alleles2_factor <- diff
-    # }
-    
-    # g1 <- ggplot(data_[project==p], aes(v_alleles2_factor, count, text = text)) +
-    #   geom_boxplot(outlier.shape=NA, color = colors[p]) +
-    #   geom_point(position=position_jitter(width = 0.1), color = colors[p]) +
-    #   labs(x = "allele", y = "# Sequences", color = "") +
-    #   scale_color_manual(values = pal %>% usecol(n = n_alleles)) +
-    #   theme(axis.text.x = element_text(size = 14, angle = 90, vjust = 0.5, hjust = 1))
-    
-    g1 <- data_[project == p] %>%
-      plot_ly() %>%
-      add_trace(
-        type = "scatter",
-        x = ~ jitter(as.numeric(v_alleles2_factor)),
-        y = ~ count,
-        text = ~ text,
-        marker = list(
-          color = colors[p],
-          size = 8,
-          line = list(width = 1,  color = 'gray')
-        ),
-        mode = 'markers',
-        showlegend = FALSE,
-        opacity = 0.8,
-        hoverinfo = 'text'
-      ) %>%
-      add_trace(
-        x = ~ as.numeric(v_alleles2_factor),
-        y = ~ count,
-        marker = list(color = colors[p]),
-        type = "box",
-        hoverinfo = "none",
-        showlegend = FALSE,
-        fillcolor = "transparent"
-      )  %>%
-      layout(
-        hovermode = 'closest',
-        xaxis = list(
-          title = "Alleles",
-          autotick = F,
-          tickmode = "array",
-          tickvals = as.numeric(factor(levels(
-            data_$v_alleles2_factor
-          ))),
-          ticktext = levels(data_$v_alleles2_factor)
-        ),
-        yaxis = list(title = "# Sequences")
-      ) %>%
-      add_annotations(
-        text = p,
-        x = 0.5,
-        y = 1.1,
-        yref = "paper",
-        xref = "paper",
-        xanchor = "middle",
-        yanchor = "top",
-        showarrow = FALSE,
-        font = list(size = 15)
-      )
-    
-    g1$x$data <- lapply(
-      g1$x$data,
-      FUN = function(x) {
-        if (x$marker$line$color == "rgba(0,0,0,1)")
-          x$marker = list(opacity = 0)
-        return(x)
-      }
-    )
-    
-    return(g1)
-  })
-  
+  # p_list <- lapply(unique(data_$project), function(p) {
+  #   # dd <- data_[project==p]
+  #   # for (diff in setdiff(levels(dd$v_alleles2_factor), unique(dd$v_alleles2_factor))) {
+  #   #   dummy_name = paste0('dummy_', diff)
+  #   #   dd[dummy_name,] <- dd[1,]
+  #   #   for (n in names(dd[1,])) {
+  #   #     dd[dummy_name,][n] = NaN
+  #   #   }
+  #   #   dd[dummy_name,]$v_alleles2_factor <- diff
+  #   # }
+  #   
+  #   # g1 <- ggplot(data_[project==p], aes(v_alleles2_factor, count, text = text)) +
+  #   #   geom_boxplot(outlier.shape=NA, color = colors[p]) +
+  #   #   geom_point(position=position_jitter(width = 0.1), color = colors[p]) +
+  #   #   labs(x = "allele", y = "# Sequences", color = "") +
+  #   #   scale_color_manual(values = pal %>% usecol(n = n_alleles)) +
+  #   #   theme(axis.text.x = element_text(size = 14, angle = 90, vjust = 0.5, hjust = 1))
+  #   
+  #   g1 <- data_[project == p] %>%
+  #     plot_ly() %>%
+  #     add_trace(
+  #       type = "scatter",
+  #       x = ~ jitter(as.numeric(v_alleles2_factor)),
+  #       y = ~ count,
+  #       text = ~ text,
+  #       marker = list(
+  #         color = colors[p],
+  #         size = 8,
+  #         line = list(width = 1,  color = 'gray')
+  #       ),
+  #       mode = 'markers',
+  #       showlegend = FALSE,
+  #       opacity = 0.8,
+  #       hoverinfo = 'text'
+  #     ) %>%
+  #     add_trace(
+  #       x = ~ as.numeric(v_alleles2_factor),
+  #       y = ~ count,
+  #       marker = list(color = colors[p]),
+  #       type = "box",
+  #       hoverinfo = "none",
+  #       showlegend = FALSE,
+  #       fillcolor = "transparent"
+  #     )  %>%
+  #     layout(
+  #       hovermode = 'closest',
+  #       xaxis = list(
+  #         title = "Alleles",
+  #         autotick = F,
+  #         tickmode = "array",
+  #         tickvals = as.numeric(factor(levels(
+  #           data_$v_alleles2_factor
+  #         ))),
+  #         ticktext = levels(data_$v_alleles2_factor)
+  #       ),
+  #       yaxis = list(title = "# Sequences")
+  #     ) %>%
+  #     add_annotations(
+  #       text = p,
+  #       x = 0.5,
+  #       y = 1.1,
+  #       yref = "paper",
+  #       xref = "paper",
+  #       xanchor = "middle",
+  #       yanchor = "top",
+  #       showarrow = FALSE,
+  #       font = list(size = 15)
+  #     )
+  #   
+  #   g1$x$data <- lapply(
+  #     g1$x$data,
+  #     FUN = function(x) {
+  #       if (x$marker$line$color == "rgba(0,0,0,1)")
+  #         x$marker = list(opacity = 0)
+  #       return(x)
+  #     }
+  #   )
+  #   
+  #   return(g1)
+  # })
+  # 
   # subplot(p_list, nrows = length(colors),
   #         shareY = F, titleX = T,
   #         titleY = T, shareX = F, margin = 0.2)
+  pp <- ggplot(data_, aes(x = v_alleles2_factor, y = count, text = text)) + geom_boxplot(outlier.shape = NA) + geom_jitter(alpha = 0.9, color = "gray", fill = "yellow", shape = 21) + facet_grid(project~.) + theme_minimal() + theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+  p_list <- ggplotly(pp, tooltip = "text")
   return(p_list)
 }
 
@@ -1162,16 +1168,16 @@ seq_align <-
         ), seq))
     
     mat_sub <- mat[alleles, alleles]
-    
+    if(length(mat_sub)==1) return(NULL)
     colnames(mat_sub) <-  gsub("IGH", "", colnames(mat_sub))
     rownames(mat_sub) <-  gsub("IGH", "", rownames(mat_sub))
     
     matrix_sequences <-
       as.data.frame(sapply(sequences, seqinr::s2c), stringsAsFactors = F)
-    
+
     nucs <-
-      nrow(matrix_sequences) - sum(apply(matrix_sequences, 1, function(x)
-        all(x == ".")))
+       nrow(matrix_sequences) - sum(apply(matrix_sequences, 1, function(x)
+         all(x == ".")))
     if (length(alleles) < 3) {
       hc <- hclust(as.dist(mat_sub))
     } else{
@@ -1244,27 +1250,27 @@ seq_align2 <-
           seq, paste0(rep(".", 318 - nchar(seq)), collapse = ""), collapse = ""
         ), seq))
     
-    mat_sub <- mat[alleles, alleles]
-    
-    colnames(mat_sub) <-  gsub("IGH", "", colnames(mat_sub))
-    rownames(mat_sub) <-  gsub("IGH", "", rownames(mat_sub))
-    
+    # mat_sub <- mat[alleles, alleles]
+    # 
+    # colnames(mat_sub) <-  gsub("IGH", "", colnames(mat_sub))
+    # rownames(mat_sub) <-  gsub("IGH", "", rownames(mat_sub))
+    # 
     matrix_sequences <-
       as.data.frame(sapply(sequences, seqinr::s2c), stringsAsFactors = F)
     
     nucs <-
       nrow(matrix_sequences) - sum(apply(matrix_sequences, 1, function(x)
         all(x == ".")))
-    if (length(alleles) < 3) {
-      hc <- hclust(as.dist(mat_sub))
-    } else{
-      hc <- ape::nj(as.dist(mat_sub))
-      hc <- ape::ladderize(hc)
-    }
-    dend <- as.dendrogram(hc)
-    dend <- dendextend::set(dend, "labels_cex", 2)
-    ggd1 <- as.ggdend(dend)
-    ggd1$labels$y <- ggd1$labels$y-0.005
+    # if (length(alleles) < 3) {
+    #   hc <- hclust(as.dist(mat_sub))
+    # } else{
+    #   hc <- ape::nj(as.dist(mat_sub))
+    #   hc <- ape::ladderize(hc)
+    # }
+    # dend <- as.dendrogram(hc)
+    # dend <- dendextend::set(dend, "labels_cex", 2)
+    # ggd1 <- as.ggdend(dend)
+    # ggd1$labels$y <- ggd1$labels$y-0.005
     #ggd1$labels$angle <- 45
     #ggd1$labels$hjust <- 1
     #ggd1$labels$vjust <- 0.5
@@ -1350,7 +1356,7 @@ seq_align2 <-
       }
     }
     plot_align <-
-      function(data,
+      function(dt,
                low_bound = 1,
                upper_boud = 80,
                hotspot) {
@@ -1359,8 +1365,8 @@ seq_align2 <-
             hotspot[which(as.numeric(hotspot) %in% low_bound:upper_boud)]
         else
           ht <- NULL
-        p <- ggplot(data[data$id >= low_bound &
-                           data$id < upper_boud, ]) +
+        p <- ggplot(dt[dt$id >= low_bound &
+                           dt$id < upper_boud, ]) +
           geom_tile(aes(
             x = (pos),
             y = (allele),
@@ -1385,10 +1391,10 @@ seq_align2 <-
             
             p <- p + geom_rect(
               data = df_rect,
-              size = 2,
+              size = 1,
               fill = NA,
               linejoin = "bevel",
-              lty = 3,
+              lty = 1,
               colour = jcolors("pal2")[2],
               aes(
                 xmin = x - 0.5,

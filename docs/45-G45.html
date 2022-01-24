@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2022-01-11" />
+<meta name="date" content="2022-01-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,20 +53,72 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.20/datatables.js"></script>
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -170,366 +222,373 @@
 <li class="chapter" data-level="" data-path="07-G7.html"><a href="07-G7.html#allele-specific-cutoff-5"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="08-G8.html"><a href="08-G8.html"><i class="fa fa-check"></i>IGHV1-69/IGHV1-69D - G8</a>
-<ul>
-<li class="chapter" data-level="" data-path="08-G8.html"><a href="08-G8.html#allele-appearance"><i class="fa fa-check"></i>Allele appearance</a></li>
-<li class="chapter" data-level="" data-path="08-G8.html"><a href="08-G8.html#group-alignment-6"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="08-G8.html"><a href="08-G8.html#sequence-depth-7"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="08-G8.html"><a href="08-G8.html#absolute-cutoff-6"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="08-G8.html"><a href="08-G8.html#observations-7"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="08-G8.html"><a href="08-G8.html#conclusions-8"><i class="fa fa-check"></i>Conclusions</a>
-<ul>
-<li class="chapter" data-level="" data-path="08-G8.html"><a href="08-G8.html#allele-specific-cutoff-6"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
-</ul></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="08-G8.html"><a href="08-G8.html"><i class="fa fa-check"></i>IGHV1-69/IGHV1-69D - G8</a></li>
 <li class="chapter" data-level="" data-path="09-G9.html"><a href="09-G9.html"><i class="fa fa-check"></i>IGHV1-69-2 - G9</a>
 <ul>
 <li class="chapter" data-level="" data-path="09-G9.html"><a href="09-G9.html#allele-appearnce-7"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="09-G9.html"><a href="09-G9.html#sequence-depth-8"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="09-G9.html"><a href="09-G9.html#observations-8"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="09-G9.html"><a href="09-G9.html#conclusions-9"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="09-G9.html"><a href="09-G9.html#sequence-depth-7"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="09-G9.html"><a href="09-G9.html#observations-7"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="09-G9.html"><a href="09-G9.html#conclusions-8"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="09-G9.html"><a href="09-G9.html#allele-specific-cutoff-7"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="09-G9.html"><a href="09-G9.html#allele-specific-cutoff-6"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="10-G10.html"><a href="10-G10.html"><i class="fa fa-check"></i>IGHV1-8 - G10</a>
 <ul>
 <li class="chapter" data-level="" data-path="10-G10.html"><a href="10-G10.html#allele-appearnce-8"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="10-G10.html"><a href="10-G10.html#group-alignment-7"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="10-G10.html"><a href="10-G10.html#sequence-depth-9"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="10-G10.html"><a href="10-G10.html#absolute-cutoff-7"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="10-G10.html"><a href="10-G10.html#observations-9"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="10-G10.html"><a href="10-G10.html#conclusions-10"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="10-G10.html"><a href="10-G10.html#group-alignment-6"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="10-G10.html"><a href="10-G10.html#sequence-depth-8"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="10-G10.html"><a href="10-G10.html#absolute-cutoff-6"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="10-G10.html"><a href="10-G10.html#observations-8"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="10-G10.html"><a href="10-G10.html#conclusions-9"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="10-G10.html"><a href="10-G10.html#allele-specific-cutoff-8"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="10-G10.html"><a href="10-G10.html#allele-specific-cutoff-7"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="11-G11.html"><a href="11-G11.html"><i class="fa fa-check"></i>IGHV2-26 - G11</a>
 <ul>
 <li class="chapter" data-level="" data-path="11-G11.html"><a href="11-G11.html#allele-appearnce-9"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="11-G11.html"><a href="11-G11.html#group-alignment-8"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="11-G11.html"><a href="11-G11.html#sequence-depth-10"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="11-G11.html"><a href="11-G11.html#absolute-cutoff-8"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="11-G11.html"><a href="11-G11.html#observations-10"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="11-G11.html"><a href="11-G11.html#conclusions-11"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="11-G11.html"><a href="11-G11.html#group-alignment-7"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="11-G11.html"><a href="11-G11.html#sequence-depth-9"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="11-G11.html"><a href="11-G11.html#absolute-cutoff-7"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="11-G11.html"><a href="11-G11.html#observations-9"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="11-G11.html"><a href="11-G11.html#conclusions-10"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="11-G11.html"><a href="11-G11.html#allele-specific-cutoff-9"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="11-G11.html"><a href="11-G11.html#allele-specific-cutoff-8"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="12-G12.html"><a href="12-G12.html"><i class="fa fa-check"></i>IGHV2-5 - G12</a>
 <ul>
 <li class="chapter" data-level="" data-path="12-G12.html"><a href="12-G12.html#allele-appearnce-10"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="12-G12.html"><a href="12-G12.html#group-alignment-9"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="12-G12.html"><a href="12-G12.html#sequence-depth-11"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="12-G12.html"><a href="12-G12.html#absolute-cutoff-9"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="12-G12.html"><a href="12-G12.html#observations-11"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="12-G12.html"><a href="12-G12.html#conclusions-12"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="12-G12.html"><a href="12-G12.html#group-alignment-8"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="12-G12.html"><a href="12-G12.html#sequence-depth-10"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="12-G12.html"><a href="12-G12.html#absolute-cutoff-8"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="12-G12.html"><a href="12-G12.html#observations-10"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="12-G12.html"><a href="12-G12.html#conclusions-11"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="12-G12.html"><a href="12-G12.html#allele-specific-cutoff-10"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="12-G12.html"><a href="12-G12.html#allele-specific-cutoff-9"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="13-G13.html"><a href="13-G13.html"><i class="fa fa-check"></i>IGHV2-70/IGHV2-70D - G13</a>
 <ul>
 <li class="chapter" data-level="" data-path="13-G13.html"><a href="13-G13.html#allele-appearnce-11"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="13-G13.html"><a href="13-G13.html#group-alignment-10"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="13-G13.html"><a href="13-G13.html#sequence-depth-12"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="13-G13.html"><a href="13-G13.html#absolute-cutoff-10"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="13-G13.html"><a href="13-G13.html#observations-12"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="13-G13.html"><a href="13-G13.html#conclusions-13"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="13-G13.html"><a href="13-G13.html#group-alignment-9"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="13-G13.html"><a href="13-G13.html#sequence-depth-11"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="13-G13.html"><a href="13-G13.html#absolute-cutoff-9"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="13-G13.html"><a href="13-G13.html#observations-11"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="13-G13.html"><a href="13-G13.html#conclusions-12"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="13-G13.html"><a href="13-G13.html#allele-specific-cutoff-11"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="13-G13.html"><a href="13-G13.html#allele-specific-cutoff-10"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="14-G14.html"><a href="14-G14.html"><i class="fa fa-check"></i>IGHV3-11 - G14</a>
 <ul>
 <li class="chapter" data-level="" data-path="14-G14.html"><a href="14-G14.html#allele-appearnce-12"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="14-G14.html"><a href="14-G14.html#group-alignment-11"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="14-G14.html"><a href="14-G14.html#sequence-depth-13"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="14-G14.html"><a href="14-G14.html#absolute-cutoff-11"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="14-G14.html"><a href="14-G14.html#observations-13"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="14-G14.html"><a href="14-G14.html#conclusions-14"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="14-G14.html"><a href="14-G14.html#group-alignment-10"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="14-G14.html"><a href="14-G14.html#sequence-depth-12"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="14-G14.html"><a href="14-G14.html#absolute-cutoff-10"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="14-G14.html"><a href="14-G14.html#observations-12"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="14-G14.html"><a href="14-G14.html#conclusions-13"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="14-G14.html"><a href="14-G14.html#allele-specific-cutoff-12"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="14-G14.html"><a href="14-G14.html#allele-specific-cutoff-11"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="15-G15.html"><a href="15-G15.html"><i class="fa fa-check"></i>IGHV3-13 - G15</a>
 <ul>
 <li class="chapter" data-level="" data-path="15-G15.html"><a href="15-G15.html#allele-appearnce-13"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="15-G15.html"><a href="15-G15.html#group-alignment-12"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="15-G15.html"><a href="15-G15.html#sequence-depth-14"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="15-G15.html"><a href="15-G15.html#absolute-cutoff-12"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="15-G15.html"><a href="15-G15.html#observations-14"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="15-G15.html"><a href="15-G15.html#conclusions-15"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="15-G15.html"><a href="15-G15.html#group-alignment-11"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="15-G15.html"><a href="15-G15.html#sequence-depth-13"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="15-G15.html"><a href="15-G15.html#absolute-cutoff-11"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="15-G15.html"><a href="15-G15.html#observations-13"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="15-G15.html"><a href="15-G15.html#conclusions-14"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="15-G15.html"><a href="15-G15.html#allele-specific-cutoff-13"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="15-G15.html"><a href="15-G15.html#allele-specific-cutoff-12"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="16-G16.html"><a href="16-G16.html"><i class="fa fa-check"></i>IGHV3-15 - G16</a>
 <ul>
 <li class="chapter" data-level="" data-path="16-G16.html"><a href="16-G16.html#allele-appearnce-14"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="16-G16.html"><a href="16-G16.html#group-alignment-13"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="16-G16.html"><a href="16-G16.html#sequence-depth-15"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="16-G16.html"><a href="16-G16.html#absolute-cutoff-13"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="16-G16.html"><a href="16-G16.html#observations-15"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="16-G16.html"><a href="16-G16.html#conclusions-16"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="16-G16.html"><a href="16-G16.html#group-alignment-12"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="16-G16.html"><a href="16-G16.html#sequence-depth-14"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="16-G16.html"><a href="16-G16.html#absolute-cutoff-12"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="16-G16.html"><a href="16-G16.html#observations-14"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="16-G16.html"><a href="16-G16.html#conclusions-15"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="16-G16.html"><a href="16-G16.html#allele-specific-cutoff-14"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="16-G16.html"><a href="16-G16.html#allele-specific-cutoff-13"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="17-G17.html"><a href="17-G17.html"><i class="fa fa-check"></i>IGHV3-20 - G17</a>
 <ul>
 <li class="chapter" data-level="" data-path="17-G17.html"><a href="17-G17.html#allele-appearnce-15"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="17-G17.html"><a href="17-G17.html#group-alignment-14"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="17-G17.html"><a href="17-G17.html#sequence-depth-16"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="17-G17.html"><a href="17-G17.html#absolute-cutoff-14"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="17-G17.html"><a href="17-G17.html#observations-16"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="17-G17.html"><a href="17-G17.html#conclusions-17"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="17-G17.html"><a href="17-G17.html#group-alignment-13"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="17-G17.html"><a href="17-G17.html#sequence-depth-15"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="17-G17.html"><a href="17-G17.html#absolute-cutoff-13"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="17-G17.html"><a href="17-G17.html#observations-15"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="17-G17.html"><a href="17-G17.html#conclusions-16"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="17-G17.html"><a href="17-G17.html#allele-specific-cutoff-15"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="17-G17.html"><a href="17-G17.html#allele-specific-cutoff-14"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="18-G18.html"><a href="18-G18.html"><i class="fa fa-check"></i>IGHV3-21 - G18</a>
 <ul>
 <li class="chapter" data-level="" data-path="18-G18.html"><a href="18-G18.html#allele-appearnce-16"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="18-G18.html"><a href="18-G18.html#group-alignment-15"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="18-G18.html"><a href="18-G18.html#sequence-depth-17"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="18-G18.html"><a href="18-G18.html#absolute-cutoff-15"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="18-G18.html"><a href="18-G18.html#observations-17"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="18-G18.html"><a href="18-G18.html#conclusions-18"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="18-G18.html"><a href="18-G18.html#group-alignment-14"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="18-G18.html"><a href="18-G18.html#sequence-depth-16"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="18-G18.html"><a href="18-G18.html#absolute-cutoff-14"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="18-G18.html"><a href="18-G18.html#observations-16"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="18-G18.html"><a href="18-G18.html#conclusions-17"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="18-G18.html"><a href="18-G18.html#allele-specific-cutoff-16"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="18-G18.html"><a href="18-G18.html#allele-specific-cutoff-15"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="19-G19.html"><a href="19-G19.html"><i class="fa fa-check"></i>IGHV3-23/IGHV3-23D - G19</a>
 <ul>
 <li class="chapter" data-level="" data-path="19-G19.html"><a href="19-G19.html#allele-appearnce-17"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="19-G19.html"><a href="19-G19.html#group-alignment-16"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="19-G19.html"><a href="19-G19.html#sequence-depth-18"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="19-G19.html"><a href="19-G19.html#absolute-cutoff-16"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="19-G19.html"><a href="19-G19.html#observations-18"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="19-G19.html"><a href="19-G19.html#conclusions-19"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="19-G19.html"><a href="19-G19.html#group-alignment-15"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="19-G19.html"><a href="19-G19.html#sequence-depth-17"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="19-G19.html"><a href="19-G19.html#absolute-cutoff-15"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="19-G19.html"><a href="19-G19.html#observations-17"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="19-G19.html"><a href="19-G19.html#conclusions-18"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="19-G19.html"><a href="19-G19.html#allele-specific-cutoff-17"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="19-G19.html"><a href="19-G19.html#allele-specific-cutoff-16"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="20-G20.html"><a href="20-G20.html"><i class="fa fa-check"></i>IGHV3-30/IGHV3-30-3/IGHV3-30-5/IGHV3-33 - G20</a>
 <ul>
 <li class="chapter" data-level="" data-path="20-G20.html"><a href="20-G20.html#allele-appearnce-18"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="20-G20.html"><a href="20-G20.html#group-alignment-17"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="20-G20.html"><a href="20-G20.html#sequence-depth-19"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="20-G20.html"><a href="20-G20.html#absolute-cutoff-17"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="20-G20.html"><a href="20-G20.html#observations-19"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="20-G20.html"><a href="20-G20.html#conclusions-20"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="20-G20.html"><a href="20-G20.html#group-alignment-16"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="20-G20.html"><a href="20-G20.html#sequence-depth-18"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="20-G20.html"><a href="20-G20.html#absolute-cutoff-16"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="20-G20.html"><a href="20-G20.html#observations-18"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="20-G20.html"><a href="20-G20.html#conclusions-19"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="20-G20.html"><a href="20-G20.html#allele-specific-cutoff-18"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="20-G20.html"><a href="20-G20.html#allele-specific-cutoff-17"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="21-G21.html"><a href="21-G21.html"><i class="fa fa-check"></i>IGHV3-35 - G21</a>
 <ul>
 <li class="chapter" data-level="" data-path="21-G21.html"><a href="21-G21.html#allele-appearnce-19"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="21-G21.html"><a href="21-G21.html#sequence-depth-20"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="21-G21.html"><a href="21-G21.html#observations-20"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="21-G21.html"><a href="21-G21.html#conclusions-21"><i class="fa fa-check"></i>Conclusions</a></li>
+<li class="chapter" data-level="" data-path="21-G21.html"><a href="21-G21.html#sequence-depth-19"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="21-G21.html"><a href="21-G21.html#observations-19"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="21-G21.html"><a href="21-G21.html#conclusions-20"><i class="fa fa-check"></i>Conclusions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="22-G22.html"><a href="22-G22.html"><i class="fa fa-check"></i>IGHV3-43/IGHV3-43D - G22</a>
 <ul>
 <li class="chapter" data-level="" data-path="22-G22.html"><a href="22-G22.html#allele-appearnce-20"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="22-G22.html"><a href="22-G22.html#group-alignment-18"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="22-G22.html"><a href="22-G22.html#sequence-depth-21"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="22-G22.html"><a href="22-G22.html#absolute-cutoff-18"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="22-G22.html"><a href="22-G22.html#observations-21"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="22-G22.html"><a href="22-G22.html#conclusions-22"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="22-G22.html"><a href="22-G22.html#group-alignment-17"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="22-G22.html"><a href="22-G22.html#sequence-depth-20"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="22-G22.html"><a href="22-G22.html#absolute-cutoff-17"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="22-G22.html"><a href="22-G22.html#observations-20"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="22-G22.html"><a href="22-G22.html#conclusions-21"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="22-G22.html"><a href="22-G22.html#allele-specific-cutoff-19"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="22-G22.html"><a href="22-G22.html#allele-specific-cutoff-18"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="23-G23.html"><a href="23-G23.html"><i class="fa fa-check"></i>IGHV3-48 - G23</a>
 <ul>
 <li class="chapter" data-level="" data-path="23-G23.html"><a href="23-G23.html#allele-appearnce-21"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="23-G23.html"><a href="23-G23.html#group-alignment-19"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="23-G23.html"><a href="23-G23.html#sequence-depth-22"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="23-G23.html"><a href="23-G23.html#absolute-cutoff-19"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="23-G23.html"><a href="23-G23.html#observations-22"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="23-G23.html"><a href="23-G23.html#conclusions-23"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="23-G23.html"><a href="23-G23.html#group-alignment-18"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="23-G23.html"><a href="23-G23.html#sequence-depth-21"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="23-G23.html"><a href="23-G23.html#absolute-cutoff-18"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="23-G23.html"><a href="23-G23.html#observations-21"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="23-G23.html"><a href="23-G23.html#conclusions-22"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="23-G23.html"><a href="23-G23.html#allele-specific-cutoff-20"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="23-G23.html"><a href="23-G23.html#allele-specific-cutoff-19"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="24-G24.html"><a href="24-G24.html"><i class="fa fa-check"></i>IGHV3-49 - G24</a>
 <ul>
 <li class="chapter" data-level="" data-path="24-G24.html"><a href="24-G24.html#allele-appearnce-22"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="24-G24.html"><a href="24-G24.html#group-alignment-20"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="24-G24.html"><a href="24-G24.html#sequence-depth-23"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="24-G24.html"><a href="24-G24.html#absolute-cutoff-20"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="24-G24.html"><a href="24-G24.html#observations-23"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="24-G24.html"><a href="24-G24.html#conclusions-24"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="24-G24.html"><a href="24-G24.html#group-alignment-19"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="24-G24.html"><a href="24-G24.html#sequence-depth-22"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="24-G24.html"><a href="24-G24.html#absolute-cutoff-19"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="24-G24.html"><a href="24-G24.html#observations-22"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="24-G24.html"><a href="24-G24.html#conclusions-23"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="24-G24.html"><a href="24-G24.html#allele-specific-cutoff-21"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="24-G24.html"><a href="24-G24.html#allele-specific-cutoff-20"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="25-G25.html"><a href="25-G25.html"><i class="fa fa-check"></i>IGHV3-53/IGHV3-66 - G25</a>
 <ul>
 <li class="chapter" data-level="" data-path="25-G25.html"><a href="25-G25.html#allele-appearnce-23"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="25-G25.html"><a href="25-G25.html#group-alignment-21"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="25-G25.html"><a href="25-G25.html#sequence-depth-24"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="25-G25.html"><a href="25-G25.html#absolute-cutoff-21"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="25-G25.html"><a href="25-G25.html#observations-24"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="25-G25.html"><a href="25-G25.html#conclusions-25"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="25-G25.html"><a href="25-G25.html#group-alignment-20"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="25-G25.html"><a href="25-G25.html#sequence-depth-23"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="25-G25.html"><a href="25-G25.html#absolute-cutoff-20"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="25-G25.html"><a href="25-G25.html#observations-23"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="25-G25.html"><a href="25-G25.html#conclusions-24"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="25-G25.html"><a href="25-G25.html#allele-specific-cutoff-22"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="25-G25.html"><a href="25-G25.html#allele-specific-cutoff-21"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="26-G26.html"><a href="26-G26.html"><i class="fa fa-check"></i>IGHV3-62 - G26</a>
 <ul>
 <li class="chapter" data-level="" data-path="26-G26.html"><a href="26-G26.html#allele-appearnce-24"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="26-G26.html"><a href="26-G26.html#conclusions-26"><i class="fa fa-check"></i>Conclusions</a></li>
+<li class="chapter" data-level="" data-path="26-G26.html"><a href="26-G26.html#observations-24"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="26-G26.html"><a href="26-G26.html#conclusions-25"><i class="fa fa-check"></i>Conclusions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="27-G27.html"><a href="27-G27.html"><i class="fa fa-check"></i>IGHV3-64/IGHV3-64D - G27</a>
 <ul>
 <li class="chapter" data-level="" data-path="27-G27.html"><a href="27-G27.html#allele-appearnce-25"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="27-G27.html"><a href="27-G27.html#group-alignment-22"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="27-G27.html"><a href="27-G27.html#sequence-depth-25"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="27-G27.html"><a href="27-G27.html#absolute-cutoff-22"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="27-G27.html"><a href="27-G27.html#group-alignment-21"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="27-G27.html"><a href="27-G27.html#sequence-depth-24"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="27-G27.html"><a href="27-G27.html#absolute-cutoff-21"><i class="fa fa-check"></i>Absolute cutoff</a></li>
 <li class="chapter" data-level="" data-path="27-G27.html"><a href="27-G27.html#observations-25"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="27-G27.html"><a href="27-G27.html#conclusions-27"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="27-G27.html"><a href="27-G27.html#conclusions-26"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="27-G27.html"><a href="27-G27.html#allele-specific-cutoff-23"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="27-G27.html"><a href="27-G27.html#allele-specific-cutoff-22"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="28-G28.html"><a href="28-G28.html"><i class="fa fa-check"></i>IGHV3-7 - G28</a>
 <ul>
 <li class="chapter" data-level="" data-path="28-G28.html"><a href="28-G28.html#allele-appearnce-26"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="28-G28.html"><a href="28-G28.html#group-alignment-23"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="28-G28.html"><a href="28-G28.html#sequence-depth-26"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="28-G28.html"><a href="28-G28.html#absolute-cutoff-23"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="28-G28.html"><a href="28-G28.html#group-alignment-22"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="28-G28.html"><a href="28-G28.html#sequence-depth-25"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="28-G28.html"><a href="28-G28.html#absolute-cutoff-22"><i class="fa fa-check"></i>Absolute cutoff</a></li>
 <li class="chapter" data-level="" data-path="28-G28.html"><a href="28-G28.html#observations-26"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="28-G28.html"><a href="28-G28.html#conclusions-28"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="28-G28.html"><a href="28-G28.html#conclusions-27"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="28-G28.html"><a href="28-G28.html#allele-specific-cutoff-24"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="28-G28.html"><a href="28-G28.html#allele-specific-cutoff-23"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="29-G29.html"><a href="29-G29.html"><i class="fa fa-check"></i>IGHV3-72 - G29</a>
 <ul>
 <li class="chapter" data-level="" data-path="29-G29.html"><a href="29-G29.html#allele-appearnce-27"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="29-G29.html"><a href="29-G29.html#sequence-depth-27"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="29-G29.html"><a href="29-G29.html#sequence-depth-26"><i class="fa fa-check"></i>Sequence depth</a></li>
 <li class="chapter" data-level="" data-path="29-G29.html"><a href="29-G29.html#observations-27"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="29-G29.html"><a href="29-G29.html#conclusions-29"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="29-G29.html"><a href="29-G29.html#conclusions-28"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="29-G29.html"><a href="29-G29.html#allele-specific-cutoff-25"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="29-G29.html"><a href="29-G29.html#allele-specific-cutoff-24"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="30-G30.html"><a href="30-G30.html"><i class="fa fa-check"></i>IGHV3-73 - G30</a>
 <ul>
 <li class="chapter" data-level="" data-path="30-G30.html"><a href="30-G30.html#allele-appearnce-28"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="30-G30.html"><a href="30-G30.html#group-alignment-24"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="30-G30.html"><a href="30-G30.html#sequence-depth-28"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="30-G30.html"><a href="30-G30.html#absolute-cutoff-24"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="30-G30.html"><a href="30-G30.html#group-alignment-23"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="30-G30.html"><a href="30-G30.html#sequence-depth-27"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="30-G30.html"><a href="30-G30.html#absolute-cutoff-23"><i class="fa fa-check"></i>Absolute cutoff</a></li>
 <li class="chapter" data-level="" data-path="30-G30.html"><a href="30-G30.html#observations-28"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="30-G30.html"><a href="30-G30.html#conclusions-30"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="30-G30.html"><a href="30-G30.html#conclusions-29"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="30-G30.html"><a href="30-G30.html#allele-specific-cutoff-26"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="30-G30.html"><a href="30-G30.html#allele-specific-cutoff-25"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="31-G31.html"><a href="31-G31.html"><i class="fa fa-check"></i>IGHV3-74 - G31</a>
 <ul>
 <li class="chapter" data-level="" data-path="31-G31.html"><a href="31-G31.html#allele-appearnce-29"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="31-G31.html"><a href="31-G31.html#group-alignment-25"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="31-G31.html"><a href="31-G31.html#sequence-depth-29"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="31-G31.html"><a href="31-G31.html#absolute-cutoff-25"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="31-G31.html"><a href="31-G31.html#group-alignment-24"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="31-G31.html"><a href="31-G31.html#sequence-depth-28"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="31-G31.html"><a href="31-G31.html#absolute-cutoff-24"><i class="fa fa-check"></i>Absolute cutoff</a></li>
 <li class="chapter" data-level="" data-path="31-G31.html"><a href="31-G31.html#observations-29"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="31-G31.html"><a href="31-G31.html#conclusions-31"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="31-G31.html"><a href="31-G31.html#conclusions-30"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="31-G31.html"><a href="31-G31.html#allele-specific-cutoff-27"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="31-G31.html"><a href="31-G31.html#allele-specific-cutoff-26"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="32-G32.html"><a href="32-G32.html"><i class="fa fa-check"></i>IGHV3-9 - G32</a>
 <ul>
 <li class="chapter" data-level="" data-path="32-G32.html"><a href="32-G32.html#allele-appearnce-30"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="32-G32.html"><a href="32-G32.html#group-alignment-26"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="32-G32.html"><a href="32-G32.html#sequence-depth-30"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="32-G32.html"><a href="32-G32.html#absolute-cutoff-26"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="32-G32.html"><a href="32-G32.html#group-alignment-25"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="32-G32.html"><a href="32-G32.html#sequence-depth-29"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="32-G32.html"><a href="32-G32.html#absolute-cutoff-25"><i class="fa fa-check"></i>Absolute cutoff</a></li>
 <li class="chapter" data-level="" data-path="32-G32.html"><a href="32-G32.html#observations-30"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="32-G32.html"><a href="32-G32.html#conclusions-32"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="32-G32.html"><a href="32-G32.html#conclusions-31"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="32-G32.html"><a href="32-G32.html#allele-specific-cutoff-28"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="32-G32.html"><a href="32-G32.html#allele-specific-cutoff-27"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="33-G33.html"><a href="33-G33.html"><i class="fa fa-check"></i>IGHV4-28 - G33</a>
 <ul>
 <li class="chapter" data-level="" data-path="33-G33.html"><a href="33-G33.html#allele-appearnce-31"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="33-G33.html"><a href="33-G33.html#group-alignment-27"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="33-G33.html"><a href="33-G33.html#sequence-depth-31"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="33-G33.html"><a href="33-G33.html#absolute-cutoff-27"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="33-G33.html"><a href="33-G33.html#group-alignment-26"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="33-G33.html"><a href="33-G33.html#sequence-depth-30"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="33-G33.html"><a href="33-G33.html#absolute-cutoff-26"><i class="fa fa-check"></i>Absolute cutoff</a></li>
 <li class="chapter" data-level="" data-path="33-G33.html"><a href="33-G33.html#observations-31"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="33-G33.html"><a href="33-G33.html#conclusions-33"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="33-G33.html"><a href="33-G33.html#conclusions-32"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="33-G33.html"><a href="33-G33.html#allele-specific-cutoff-29"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="33-G33.html"><a href="33-G33.html#allele-specific-cutoff-28"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="34-G34.html"><a href="34-G34.html"><i class="fa fa-check"></i>IGHV4-30-2/IGHV4-30-4 - G34</a>
 <ul>
 <li class="chapter" data-level="" data-path="34-G34.html"><a href="34-G34.html#allele-appearnce-32"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="34-G34.html"><a href="34-G34.html#group-alignment-28"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="34-G34.html"><a href="34-G34.html#sequence-depth-32"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="34-G34.html"><a href="34-G34.html#absolute-cutoff-28"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="34-G34.html"><a href="34-G34.html#group-alignment-27"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="34-G34.html"><a href="34-G34.html#sequence-depth-31"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="34-G34.html"><a href="34-G34.html#absolute-cutoff-27"><i class="fa fa-check"></i>Absolute cutoff</a></li>
 <li class="chapter" data-level="" data-path="34-G34.html"><a href="34-G34.html#observations-32"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="34-G34.html"><a href="34-G34.html#conclusions-34"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="34-G34.html"><a href="34-G34.html#conclusions-33"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="34-G34.html"><a href="34-G34.html#allele-specific-cutoff-30"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="34-G34.html"><a href="34-G34.html#allele-specific-cutoff-29"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="35-G35.html"><a href="35-G35.html"><i class="fa fa-check"></i>IGHV4-30-4 - G35</a>
 <ul>
 <li class="chapter" data-level="" data-path="35-G35.html"><a href="35-G35.html#allele-appearnce-33"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="35-G35.html"><a href="35-G35.html#group-alignment-29"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="35-G35.html"><a href="35-G35.html#sequence-depth-33"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="35-G35.html"><a href="35-G35.html#absolute-cutoff-29"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="35-G35.html"><a href="35-G35.html#group-alignment-28"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="35-G35.html"><a href="35-G35.html#sequence-depth-32"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="35-G35.html"><a href="35-G35.html#absolute-cutoff-28"><i class="fa fa-check"></i>Absolute cutoff</a></li>
 <li class="chapter" data-level="" data-path="35-G35.html"><a href="35-G35.html#observations-33"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="35-G35.html"><a href="35-G35.html#conclusions-35"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="35-G35.html"><a href="35-G35.html#conclusions-34"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="35-G35.html"><a href="35-G35.html#allele-specific-cutoff-31"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="35-G35.html"><a href="35-G35.html#allele-specific-cutoff-30"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="36-G36.html"><a href="36-G36.html"><i class="fa fa-check"></i>IGHV4-31 - G36</a>
 <ul>
 <li class="chapter" data-level="" data-path="36-G36.html"><a href="36-G36.html#allele-appearnce-34"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="36-G36.html"><a href="36-G36.html#group-alignment-30"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="36-G36.html"><a href="36-G36.html#sequence-depth-34"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="36-G36.html"><a href="36-G36.html#absolute-cutoff-30"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="36-G36.html"><a href="36-G36.html#group-alignment-29"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="36-G36.html"><a href="36-G36.html#sequence-depth-33"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="36-G36.html"><a href="36-G36.html#absolute-cutoff-29"><i class="fa fa-check"></i>Absolute cutoff</a></li>
 <li class="chapter" data-level="" data-path="36-G36.html"><a href="36-G36.html#observations-34"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="36-G36.html"><a href="36-G36.html#conclusions-36"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="36-G36.html"><a href="36-G36.html#conclusions-35"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
-<li class="chapter" data-level="" data-path="36-G36.html"><a href="36-G36.html#allele-specific-cutoff-32"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="36-G36.html"><a href="36-G36.html#allele-specific-cutoff-31"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="37-G37.html"><a href="37-G37.html"><i class="fa fa-check"></i>IGHV4-34 - G37</a>
+<li class="chapter" data-level="" data-path="37-G37.html"><a href="37-G37.html"><i class="fa fa-check"></i>IGHV4-34/IGHV4-59 - G38</a>
 <ul>
 <li class="chapter" data-level="" data-path="37-G37.html"><a href="37-G37.html#allele-appearnce-35"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="37-G37.html"><a href="37-G37.html#group-alignment-31"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="37-G37.html"><a href="37-G37.html#sequence-depth-35"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="37-G37.html"><a href="37-G37.html#absolute-cutoff-31"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="37-G37.html"><a href="37-G37.html#observations-35"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="37-G37.html"><a href="37-G37.html#conclusions-37"><i class="fa fa-check"></i>Conclusions</a>
+<li class="chapter" data-level="" data-path="37-G37.html"><a href="37-G37.html#group-alignment-30"><i class="fa fa-check"></i>Group alignment</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="37-G371.html"><a href="37-G371.html"><i class="fa fa-check"></i>IGHV4-34 - G37</a>
 <ul>
-<li class="chapter" data-level="" data-path="37-G37.html"><a href="37-G37.html#allele-specific-cutoff-33"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+<li class="chapter" data-level="" data-path="37-G371.html"><a href="37-G371.html#allele-appearnce-36"><i class="fa fa-check"></i>Allele appearnce</a></li>
+<li class="chapter" data-level="" data-path="37-G371.html"><a href="37-G371.html#group-alignment-31"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="37-G371.html"><a href="37-G371.html#sequence-depth-34"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="37-G371.html"><a href="37-G371.html#absolute-cutoff-30"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="37-G371.html"><a href="37-G371.html#observations-35"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="37-G371.html"><a href="37-G371.html#conclusions-36"><i class="fa fa-check"></i>Conclusions</a>
+<ul>
+<li class="chapter" data-level="" data-path="37-G371.html"><a href="37-G371.html#allele-specific-cutoff-32"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="38-G38.html"><a href="38-G38.html"><i class="fa fa-check"></i>IGHV4-34/IGHV4-59 - G38</a>
+<li class="chapter" data-level="" data-path="38-G37.html"><a href="38-G37.html"><i class="fa fa-check"></i>IGHV4-34/IGHV4-59 - G38</a>
 <ul>
-<li class="chapter" data-level="" data-path="38-G38.html"><a href="38-G38.html#allele-appearnce-36"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="38-G38.html"><a href="38-G38.html#group-alignment-32"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="38-G37.html"><a href="38-G37.html#allele-appearnce-37"><i class="fa fa-check"></i>Allele appearnce</a></li>
+<li class="chapter" data-level="" data-path="38-G37.html"><a href="38-G37.html#group-alignment-32"><i class="fa fa-check"></i>Group alignment</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="38-G38.html"><a href="38-G38.html"><i class="fa fa-check"></i>IGHV4-34 - G37</a>
+<ul>
+<li class="chapter" data-level="" data-path="38-G38.html"><a href="38-G38.html#allele-appearnce-38"><i class="fa fa-check"></i>Allele appearnce</a></li>
+<li class="chapter" data-level="" data-path="38-G38.html"><a href="38-G38.html#group-alignment-33"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="38-G38.html"><a href="38-G38.html#sequence-depth-35"><i class="fa fa-check"></i>Sequence depth</a></li>
+<li class="chapter" data-level="" data-path="38-G38.html"><a href="38-G38.html#absolute-cutoff-31"><i class="fa fa-check"></i>Absolute cutoff</a></li>
+<li class="chapter" data-level="" data-path="38-G38.html"><a href="38-G38.html#observations-36"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="38-G38.html"><a href="38-G38.html#conclusions-37"><i class="fa fa-check"></i>Conclusions</a>
+<ul>
+<li class="chapter" data-level="" data-path="38-G38.html"><a href="38-G38.html#allele-specific-cutoff-33"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="39-G39.html"><a href="39-G39.html"><i class="fa fa-check"></i>IGHV4-34 - G39</a>
 <ul>
-<li class="chapter" data-level="" data-path="39-G39.html"><a href="39-G39.html#allele-appearnce-37"><i class="fa fa-check"></i>Allele appearnce</a></li>
+<li class="chapter" data-level="" data-path="39-G39.html"><a href="39-G39.html#allele-appearnce-39"><i class="fa fa-check"></i>Allele appearnce</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="40-G40.html"><a href="40-G40.html"><i class="fa fa-check"></i>IGHV4-38-2 - G40</a>
 <ul>
-<li class="chapter" data-level="" data-path="40-G40.html"><a href="40-G40.html#allele-appearnce-38"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="40-G40.html"><a href="40-G40.html#group-alignment-33"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="40-G40.html"><a href="40-G40.html#allele-appearnce-40"><i class="fa fa-check"></i>Allele appearnce</a></li>
+<li class="chapter" data-level="" data-path="40-G40.html"><a href="40-G40.html#group-alignment-34"><i class="fa fa-check"></i>Group alignment</a></li>
 <li class="chapter" data-level="" data-path="40-G40.html"><a href="40-G40.html#sequence-depth-36"><i class="fa fa-check"></i>Sequence depth</a></li>
 <li class="chapter" data-level="" data-path="40-G40.html"><a href="40-G40.html#absolute-cutoff-32"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="40-G40.html"><a href="40-G40.html#observations-36"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="40-G40.html"><a href="40-G40.html#observations-37"><i class="fa fa-check"></i>Observations</a></li>
 <li class="chapter" data-level="" data-path="40-G40.html"><a href="40-G40.html#conclusions-38"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
 <li class="chapter" data-level="" data-path="40-G40.html"><a href="40-G40.html#allele-specific-cutoff-34"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
@@ -537,11 +596,11 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="41-G41.html"><a href="41-G41.html"><i class="fa fa-check"></i>IGHV4-39 - G41</a>
 <ul>
-<li class="chapter" data-level="" data-path="41-G41.html"><a href="41-G41.html#allele-appearnce-39"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="41-G41.html"><a href="41-G41.html#group-alignment-34"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="41-G41.html"><a href="41-G41.html#allele-appearnce-41"><i class="fa fa-check"></i>Allele appearnce</a></li>
+<li class="chapter" data-level="" data-path="41-G41.html"><a href="41-G41.html#group-alignment-35"><i class="fa fa-check"></i>Group alignment</a></li>
 <li class="chapter" data-level="" data-path="41-G41.html"><a href="41-G41.html#sequence-depth-37"><i class="fa fa-check"></i>Sequence depth</a></li>
 <li class="chapter" data-level="" data-path="41-G41.html"><a href="41-G41.html#absolute-cutoff-33"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="41-G41.html"><a href="41-G41.html#observations-37"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="41-G41.html"><a href="41-G41.html#observations-38"><i class="fa fa-check"></i>Observations</a></li>
 <li class="chapter" data-level="" data-path="41-G41.html"><a href="41-G41.html#conclusions-39"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
 <li class="chapter" data-level="" data-path="41-G41.html"><a href="41-G41.html#allele-specific-cutoff-35"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
@@ -549,11 +608,11 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="42-G42.html"><a href="42-G42.html"><i class="fa fa-check"></i>IGHV4-4 - G42</a>
 <ul>
-<li class="chapter" data-level="" data-path="42-G42.html"><a href="42-G42.html#allele-appearnce-40"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="42-G42.html"><a href="42-G42.html#group-alignment-35"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="42-G42.html"><a href="42-G42.html#allele-appearnce-42"><i class="fa fa-check"></i>Allele appearnce</a></li>
+<li class="chapter" data-level="" data-path="42-G42.html"><a href="42-G42.html#group-alignment-36"><i class="fa fa-check"></i>Group alignment</a></li>
 <li class="chapter" data-level="" data-path="42-G42.html"><a href="42-G42.html#sequence-depth-38"><i class="fa fa-check"></i>Sequence depth</a></li>
 <li class="chapter" data-level="" data-path="42-G42.html"><a href="42-G42.html#absolute-cutoff-34"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="42-G42.html"><a href="42-G42.html#observations-38"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="42-G42.html"><a href="42-G42.html#observations-39"><i class="fa fa-check"></i>Observations</a></li>
 <li class="chapter" data-level="" data-path="42-G42.html"><a href="42-G42.html#conclusions-40"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
 <li class="chapter" data-level="" data-path="42-G42.html"><a href="42-G42.html#allele-specific-cutoff-36"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
@@ -561,11 +620,11 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="43-G43.html"><a href="43-G43.html"><i class="fa fa-check"></i>IGHV4-4/IGHV4-59 - G43</a>
 <ul>
-<li class="chapter" data-level="" data-path="43-G43.html"><a href="43-G43.html#allele-appearnce-41"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="43-G43.html"><a href="43-G43.html#group-alignment-36"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="43-G43.html"><a href="43-G43.html#allele-appearnce-43"><i class="fa fa-check"></i>Allele appearnce</a></li>
+<li class="chapter" data-level="" data-path="43-G43.html"><a href="43-G43.html#group-alignment-37"><i class="fa fa-check"></i>Group alignment</a></li>
 <li class="chapter" data-level="" data-path="43-G43.html"><a href="43-G43.html#sequence-depth-39"><i class="fa fa-check"></i>Sequence depth</a></li>
 <li class="chapter" data-level="" data-path="43-G43.html"><a href="43-G43.html#absolute-cutoff-35"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="43-G43.html"><a href="43-G43.html#observations-39"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="43-G43.html"><a href="43-G43.html#observations-40"><i class="fa fa-check"></i>Observations</a></li>
 <li class="chapter" data-level="" data-path="43-G43.html"><a href="43-G43.html#conclusions-41"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
 <li class="chapter" data-level="" data-path="43-G43.html"><a href="43-G43.html#allele-specific-cutoff-37"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
@@ -573,11 +632,11 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="44-G44.html"><a href="44-G44.html"><i class="fa fa-check"></i>IGHV4-59/IGHV4-4 - G44</a>
 <ul>
-<li class="chapter" data-level="" data-path="44-G44.html"><a href="44-G44.html#allele-appearnce-42"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="44-G44.html"><a href="44-G44.html#group-alignment-37"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="44-G44.html"><a href="44-G44.html#allele-appearnce-44"><i class="fa fa-check"></i>Allele appearnce</a></li>
+<li class="chapter" data-level="" data-path="44-G44.html"><a href="44-G44.html#group-alignment-38"><i class="fa fa-check"></i>Group alignment</a></li>
 <li class="chapter" data-level="" data-path="44-G44.html"><a href="44-G44.html#sequence-depth-40"><i class="fa fa-check"></i>Sequence depth</a></li>
 <li class="chapter" data-level="" data-path="44-G44.html"><a href="44-G44.html#absolute-cutoff-36"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="44-G44.html"><a href="44-G44.html#observations-40"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="44-G44.html"><a href="44-G44.html#observations-41"><i class="fa fa-check"></i>Observations</a></li>
 <li class="chapter" data-level="" data-path="44-G44.html"><a href="44-G44.html#conclusions-42"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
 <li class="chapter" data-level="" data-path="44-G44.html"><a href="44-G44.html#allele-specific-cutoff-38"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
@@ -585,79 +644,19 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="45-G45.html"><a href="45-G45.html"><i class="fa fa-check"></i>IGHV4-59 - G45</a>
 <ul>
-<li class="chapter" data-level="" data-path="45-G45.html"><a href="45-G45.html#allele-appearnce-43"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="45-G45.html"><a href="45-G45.html#allele-appearnce-44"><i class="fa fa-check"></i>Allele appearnce</a></li>
+<li class="chapter" data-level="" data-path="45-G45.html"><a href="45-G45.html#allele-appearnce-45"><i class="fa fa-check"></i>Allele appearnce</a></li>
+<li class="chapter" data-level="" data-path="45-G45.html"><a href="45-G45.html#allele-appearnce-46"><i class="fa fa-check"></i>Allele appearnce</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="46-G46.html"><a href="46-G46.html"><i class="fa fa-check"></i>IGHV4-61 - G46</a>
 <ul>
-<li class="chapter" data-level="" data-path="46-G46.html"><a href="46-G46.html#allele-appearnce-45"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="46-G46.html"><a href="46-G46.html#group-alignment-38"><i class="fa fa-check"></i>Group alignment</a></li>
+<li class="chapter" data-level="" data-path="46-G46.html"><a href="46-G46.html#allele-appearnce-47"><i class="fa fa-check"></i>Allele appearnce</a></li>
+<li class="chapter" data-level="" data-path="46-G46.html"><a href="46-G46.html#group-alignment-39"><i class="fa fa-check"></i>Group alignment</a></li>
 <li class="chapter" data-level="" data-path="46-G46.html"><a href="46-G46.html#sequence-depth-41"><i class="fa fa-check"></i>Sequence depth</a></li>
 <li class="chapter" data-level="" data-path="46-G46.html"><a href="46-G46.html#absolute-cutoff-37"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="46-G46.html"><a href="46-G46.html#observations-41"><i class="fa fa-check"></i>Observations</a></li>
+<li class="chapter" data-level="" data-path="46-G46.html"><a href="46-G46.html#observations-42"><i class="fa fa-check"></i>Observations</a></li>
 <li class="chapter" data-level="" data-path="46-G46.html"><a href="46-G46.html#conclusions-43"><i class="fa fa-check"></i>Conclusions</a>
 <ul>
 <li class="chapter" data-level="" data-path="46-G46.html"><a href="46-G46.html#allele-specific-cutoff-39"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="47-G47.html"><a href="47-G47.html"><i class="fa fa-check"></i>IGHV4-61 - G47</a>
-<ul>
-<li class="chapter" data-level="" data-path="47-G47.html"><a href="47-G47.html#allele-appearnce-46"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="47-G47.html"><a href="47-G47.html#group-alignment-39"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="47-G47.html"><a href="47-G47.html#sequence-depth-42"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="47-G47.html"><a href="47-G47.html#absolute-cutoff-38"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="47-G47.html"><a href="47-G47.html#observations-42"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="47-G47.html"><a href="47-G47.html#conclusions-44"><i class="fa fa-check"></i>Conclusions</a>
-<ul>
-<li class="chapter" data-level="" data-path="47-G47.html"><a href="47-G47.html#allele-specific-cutoff-40"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="48-G48.html"><a href="48-G48.html"><i class="fa fa-check"></i>IGHV5-10-1 - G48</a>
-<ul>
-<li class="chapter" data-level="" data-path="48-G48.html"><a href="48-G48.html#allele-appearnce-47"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="48-G48.html"><a href="48-G48.html#group-alignment-40"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="48-G48.html"><a href="48-G48.html#sequence-depth-43"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="48-G48.html"><a href="48-G48.html#absolute-cutoff-39"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="48-G48.html"><a href="48-G48.html#observations-43"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="48-G48.html"><a href="48-G48.html#conclusions-45"><i class="fa fa-check"></i>Conclusions</a>
-<ul>
-<li class="chapter" data-level="" data-path="48-G48.html"><a href="48-G48.html#allele-specific-cutoff-41"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="49-G49.html"><a href="49-G49.html"><i class="fa fa-check"></i>IGHV5-51 - G49</a>
-<ul>
-<li class="chapter" data-level="" data-path="49-G49.html"><a href="49-G49.html#allele-appearnce-48"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="49-G49.html"><a href="49-G49.html#group-alignment-41"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="49-G49.html"><a href="49-G49.html#sequence-depth-44"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="49-G49.html"><a href="49-G49.html#absolute-cutoff-40"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="49-G49.html"><a href="49-G49.html#observations-44"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="49-G49.html"><a href="49-G49.html#conclusions-46"><i class="fa fa-check"></i>Conclusions</a>
-<ul>
-<li class="chapter" data-level="" data-path="49-G49.html"><a href="49-G49.html#allele-specific-cutoff-42"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="50-G50.html"><a href="50-G50.html"><i class="fa fa-check"></i>IGHV6-1 - G50</a>
-<ul>
-<li class="chapter" data-level="" data-path="50-G50.html"><a href="50-G50.html#allele-appearnce-49"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="50-G50.html"><a href="50-G50.html#group-alignment-42"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="50-G50.html"><a href="50-G50.html#sequence-depth-45"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="50-G50.html"><a href="50-G50.html#absolute-cutoff-41"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="50-G50.html"><a href="50-G50.html#observations-45"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="50-G50.html"><a href="50-G50.html#conclusions-47"><i class="fa fa-check"></i>Conclusions</a>
-<ul>
-<li class="chapter" data-level="" data-path="50-G50.html"><a href="50-G50.html#allele-specific-cutoff-43"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="51-G51.html"><a href="51-G51.html"><i class="fa fa-check"></i>IGHV7-4-1 - G51</a>
-<ul>
-<li class="chapter" data-level="" data-path="51-G51.html"><a href="51-G51.html#allele-appearnce-50"><i class="fa fa-check"></i>Allele appearnce</a></li>
-<li class="chapter" data-level="" data-path="51-G51.html"><a href="51-G51.html#group-alignment-43"><i class="fa fa-check"></i>Group alignment</a></li>
-<li class="chapter" data-level="" data-path="51-G51.html"><a href="51-G51.html#sequence-depth-46"><i class="fa fa-check"></i>Sequence depth</a></li>
-<li class="chapter" data-level="" data-path="51-G51.html"><a href="51-G51.html#absolute-cutoff-42"><i class="fa fa-check"></i>Absolute cutoff</a></li>
-<li class="chapter" data-level="" data-path="51-G51.html"><a href="51-G51.html#observations-46"><i class="fa fa-check"></i>Observations</a></li>
-<li class="chapter" data-level="" data-path="51-G51.html"><a href="51-G51.html#conclusions-48"><i class="fa fa-check"></i>Conclusions</a>
-<ul>
-<li class="chapter" data-level="" data-path="51-G51.html"><a href="51-G51.html#allele-specific-cutoff-44"><i class="fa fa-check"></i>Allele specific cutoff</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -682,10 +681,11 @@
             <section class="normal" id="section-">
 <div id="ighv4-59---g45" class="section level1">
 <h1>IGHV4-59 - G45</h1>
-<div id="allele-appearnce-43" class="section level2">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="45-G45.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;functions.R&quot;</span>)</span></code></pre></div>
+<div id="allele-appearnce-45" class="section level2">
 <h2>Allele appearnce</h2>
 </div>
-<div id="allele-appearnce-44" class="section level2">
+<div id="allele-appearnce-46" class="section level2">
 <h2>Allele appearnce</h2>
 <p>There are no rearrangements for this group. A single allele appear in this group, IGHV4-59G45*06</p>
 
@@ -757,20 +757,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

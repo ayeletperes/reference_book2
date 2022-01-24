@@ -30,7 +30,7 @@ share_links <- readLines("share_links.txt")
 ```
 
 ```{r,echo=FALSE}
-g_group = "IGHV4-61G46"
+g_group = 'IGHV7-4-1G46'
 group = names(func_groups)[func_groups==g_group]
 gr <- allele_db %>% filter(gene_group == g_group) %>% pull(group) %>% unique()
 g <- allele_db %>% filter(gene_group == g_group) %>% pull(gene) %>% unique()
