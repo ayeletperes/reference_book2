@@ -561,7 +561,7 @@ allele_appearance <- function(data_, g_group, allele_db) {
   data_ <- data_ %>% filter(mut == 3)
   data_ <- data_[grepl(g_group, v_gene)]
   data_[, v_alleles2 := or_allele[v_allele]]
-  height = (length(unique(data_$v_alleles2))+3)*35.4
+  height = (length(unique(data_$v_alleles2))+10)*40
   
   p <- ggplot(data_ %>% filter(is.na(j_call)), aes(v_alleles2)) + #, fill = v_alleles2
     geom_bar() + coord_flip() + facet_wrap(. ~ project, nrow = 3) +
@@ -710,7 +710,7 @@ sequence_depth <- function(data_, g_group, allele_db) {
   pp <- ggplot(data_, aes(x = v_alleles2_factor, y = count, text = text)) + geom_boxplot(outlier.shape = NA) + 
     geom_jitter(alpha = 0.9, color = "gray", fill = "yellow", shape = 21) + facet_grid(project~.) + theme_minimal() + 
     theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) + labs(y = "# Sequences", x = "")
-  p_list <- ggplotly(pp, tooltip = "text", height = 600, width = length(unique(data_$v_alleles2))*30)
+  p_list <- ggplotly(pp, tooltip = "text", height = 600, width = (length(unique(data_$v_alleles2))+10)*40)
   return(p_list)
 }
 

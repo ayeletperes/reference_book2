@@ -54,6 +54,12 @@ To examine the potential cutoff we observed the sequence depth for each allele
 tagList(sequence_depth(data, g_group, allele_db))
 ```
 
+## Absolute cutoff
+
+```{r eval=knitr::is_html_output(excludes = 'epub'), results = 'asis', echo = F}
+source_haplo_usage(g_group, allele_thresh)
+```
+
 ## Observations
 
 For this group we've seen a single allele, hence the general summary statistics do not apply here and were omitted.
