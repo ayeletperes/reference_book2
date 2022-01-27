@@ -1,4 +1,4 @@
-# IGHV4-61 - G46
+# IGHV7-4-1 - G46
 ```{r}
 source("functions.R")
 ```

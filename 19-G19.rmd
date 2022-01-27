@@ -1,4 +1,4 @@
-# IGHV3-23/IGHV3-23D - G19
+# IGHV3-23D/IGHV3-23 - G19
 ```{r}
 source("functions.R")
 ```

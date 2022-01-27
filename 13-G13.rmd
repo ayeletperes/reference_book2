@@ -1,4 +1,4 @@
-# IGHV2-70/IGHV2-70D - G13
+# IGHV2-70D/IGHV2-70 - G13
 ```{r}
 source("functions.R")
 ```

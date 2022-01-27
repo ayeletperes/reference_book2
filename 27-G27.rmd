@@ -1,4 +1,4 @@
-# IGHV3-64/IGHV3-64D - G27
+# IGHV3-64D/IGHV3-64 - G27
 ```{r}
 source("functions.R")
 ```

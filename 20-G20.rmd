@@ -1,4 +1,4 @@
-# IGHV3-30/IGHV3-30-3/IGHV3-30-5/IGHV3-33 - G20
+# IGHV3-30-5/IGHV3-30/IGHV3-33/IGHV3-30-3 - G20
 ```{r}
 source("functions.R")
 ```

@@ -561,6 +561,8 @@ allele_appearance <- function(data_, g_group, allele_db) {
   data_ <- data_ %>% filter(mut == 3)
   data_ <- data_[grepl(g_group, v_gene)]
   data_[, v_alleles2 := or_allele[v_allele]]
+  height = (length(unique(data_$v_alleles2))+3)*19.4
+  
   p <- ggplot(data_ %>% filter(is.na(j_call)), aes(v_alleles2)) + #, fill = v_alleles2
     geom_bar() + coord_flip() + facet_wrap(. ~ project, nrow = 3) +
     labs(x = "allele", y = "# Individuals", fill = "") + theme_minimal() +
@@ -577,7 +579,7 @@ allele_appearance <- function(data_, g_group, allele_db) {
       ), axis.title = element_text(size = 14)
     ) #+
     #scale_fill_manual(values = pal %>% usecol(n = n_alleles))
-  ggplotly(p)
+  ggplotly(p, height = height, width = height*1.25)
 }
 
 sequence_depth <- function(data_, g_group, allele_db) {

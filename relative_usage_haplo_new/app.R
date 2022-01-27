@@ -732,13 +732,21 @@ absolute_thresholds_dict <- list(
     'V7-4-1*02_A200T' = 1e-04
   )
 )
+
+absolute_thresholds_dict <- read.delim("alleles_db.tsv", stringsAsFactors = F)
+
+absolute_thresholds_dict <- sapply(unique(absolute_thresholds_dict$func_group), function(x){
+  tmp <- absolute_thresholds_dict[absolute_thresholds_dict$func_group==x,]
+  setNames(tmp$thresh,gsub("IGH","",tmp$or_allele))
+})
+
 server <- function(input, output, session) {
   input_vals <-
     reactiveValues(
       tabs_count = 0,
-      g_group = "IGHV3-23G19",
-      g = allele_db %>% dplyr::filter(gene_group == "IGHV3-23G19") %>% pull(gene) %>% unique(),
-      v_gene_cut = "IGHV3-23G19",
+      g_group = "IGHV3-30-3G20",
+      g = allele_db %>% dplyr::filter(gene_group == "IGHV3-30-3G20") %>% pull(gene) %>% unique(),
+      v_gene_cut = "IGHV3-30-3G20",
       allele_thresh = NULL,
       allele_thresh_names = NULL,
       allele_thresh_abs = NULL,
@@ -769,8 +777,8 @@ server <- function(input, output, session) {
 
   tmp_allele_db =
     reactive({
-      allele_db %>% dplyr::filter(grepl(as.character(input_vals$g_group), new_allele)) %>%
-        dplyr::group_by(new_allele) %>% dplyr::summarise(or_allele = paste0(or_allele, collapse = "/"))
+      tmp_allele_db = allele_db %>% dplyr::filter(grepl(as.character(input_vals$g_group), new_allele)) %>%
+        dplyr::group_by(new_allele) %>% dplyr::summarise(or_allele = paste0(sort(or_allele), collapse = "/"))
     })
 
   or_allele = reactive({

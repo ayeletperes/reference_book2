@@ -5,9 +5,9 @@ account: peresay
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 5413816
-bundleId: 5455724
+bundleId: 5513809
 url: https://peresay.shinyapps.io/relative_usage_haplo_new/
-when: 1641904226.24748
-lastSyncTime: 1641904226.24749
+when: 1643278573.34804
+lastSyncTime: 1643278573.34805
 asMultiple: FALSE
 asStatic: FALSE
